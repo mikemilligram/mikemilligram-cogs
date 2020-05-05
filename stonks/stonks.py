@@ -50,7 +50,7 @@ class Stonks(commands.Cog):
             turnips = await self.config.member(ctx.author).turnips()
         await ctx.send(get_link(turnips))
 
-    @commands.command()
+    @commands.command(help='0 = fluctuating\n1 = large spike\n2 = decreasing\n3 = small spike')
     async def pattern(self, ctx, pattern: int):
         if 0 <= pattern <= 3:
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.last_pattern.set(pattern)
