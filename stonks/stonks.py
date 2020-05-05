@@ -28,9 +28,9 @@ class Stonks(commands.Cog):
         if 0 < int(weekday) < 7 and 0 < int(time) < 3 and 1000 > price > 0:
             ts = weekday+time
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.prices.set_raw(ts, value=price)
-            await ctx.send("<:turnip:707177818756218910>")
+            await ctx.send("<:turnip:702407533377224744>")
         else:
-            await ctx.send("<:fubk:706516580368121867>")
+            await ctx.send("<:fubk:702961960786067522>")
 
     @commands.command()
     async def list(self, ctx, member: discord.Member = None):
@@ -54,27 +54,27 @@ class Stonks(commands.Cog):
     async def pattern(self, ctx, pattern: int):
         if 0 <= pattern <= 3:
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.last_pattern.set(pattern)
-            await ctx.send("<:turnip:707177818756218910>")
+            await ctx.send("<:turnip:702407533377224744>")
         else:
-            await ctx.send("<:fubk:706516580368121867>")
+            await ctx.send("<:fubk:702961960786067522>")
 
     @commands.command()
     async def resetpattern(self, ctx):
         await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.last_pattern.set(-1)
-        await ctx.send("<:turnip:707177818756218910>")
+        await ctx.send("<:turnip:702407533377224744>")
 
     @commands.command()
     async def islandprice(self, ctx, price: int):
         if price > 0:
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.sunday.set(price)
-            await ctx.send("<:turnip:707177818756218910>")
+            await ctx.send("<:turnip:702407533377224744>")
         else:
-            await ctx.send("<:fubk:706516580368121867>")
+            await ctx.send("<:fubk:702961960786067522>")
 
     @commands.command()
     async def reset(self, ctx):
         await self.config.member_from_ids(ctx.guild.id, ctx.author.id).clear()
-        await ctx.send("<:turnip:707177818756218910>")
+        await ctx.send("<:turnip:702407533377224744>")
 
 
 weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
