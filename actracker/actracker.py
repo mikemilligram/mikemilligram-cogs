@@ -68,12 +68,6 @@ class ACTracker(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @commands.command()
-    async def test(self, ctx):
-        bugs = await self.config.member(ctx.author).donated_bugs()
-        await ctx.send(bugs.keys())
-        await self.config.member(ctx.author).clear()
-
     @commands.group()
     async def list(self, ctx):
         pass
