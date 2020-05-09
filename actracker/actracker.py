@@ -130,11 +130,11 @@ class ACTracker(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @list.group()
-    async def filter(self, ctx):
+    @list.group(name='filter')
+    async def list_filter(self, ctx):
         pass
 
-    @filter.command(name='fish')
+    @list_filter.command(name='fish')
     async def filter_fish(self, ctx, month: str, flt: str, northern: bool = True ):
         fish_data = await self.config.fish()
         donated_fish = await self.config.member(ctx.author).donated_fish()
@@ -144,7 +144,7 @@ class ACTracker(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @filter.command(name='bugs')
+    @list_filter.command(name='bugs')
     async def filter_bugs(self, ctx, month: str, flt: str, northern: bool = True):
         bugs_data = await self.config.bugs()
         donated_bugs = await self.config.member(ctx.author).donated_bugs()
