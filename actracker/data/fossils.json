@@ -1,0 +1,367 @@
+{
+  "1": {
+    "name": "Acanthostega",
+    "price": "2000",
+    "class": "Standalone"
+  },
+  "2": {
+    "name": "Amber",
+    "price": "1200",
+    "class": "Standalone"
+  },
+  "3": {
+    "name": "Ammonite",
+    "price": "1100",
+    "class": "Standalone"
+  },
+  "4": {
+    "name": "Anomalocaris",
+    "price": "2000",
+    "class": "Standalone"
+  },
+  "5": {
+    "name": "Archaeopteryx",
+    "price": "1300",
+    "class": "Standalone"
+  },
+  "6": {
+    "name": "Australopith",
+    "price": "1100",
+    "class": "Standalone"
+  },
+  "7": {
+    "name": "Coprolite",
+    "price": "1100",
+    "class": "Standalone"
+  },
+  "8": {
+    "name": "Dinosaur track",
+    "price": "1000",
+    "class": "Standalone"
+  },
+  "9": {
+    "name": "Dunkleosteus",
+    "price": "3500",
+    "class": "Standalone"
+  },
+  "10": {
+    "name": "Eusthenopteron",
+    "price": "2000",
+    "class": "Standalone"
+  },
+  "11": {
+    "name": "Juramaia",
+    "price": "1000",
+    "class": "Standalone"
+  },
+  "12": {
+    "name": "Myllokunmingia",
+    "price": "1500",
+    "class": "Standalone"
+  },
+  "13": {
+    "name": "Shark-tooth pattern",
+    "price": "1000",
+    "class": "Standalone"
+  },
+  "14": {
+    "name": "Trilobite",
+    "price": "1300",
+    "class": "Standalone"
+  },
+  "15": {
+    "name": "Ankylo skull",
+    "price": "5000",
+    "class": "Ankylosaurus"
+  },
+  "16": {
+    "name": "Ankylo torso",
+    "price": "3000",
+    "class": "Ankylosaurus"
+  },
+  "17": {
+    "name": "Ankylo tail",
+    "price": "2500",
+    "class": "Ankylosaurus"
+  },
+  "18": {
+    "name": "Archelon skull",
+    "price": "4000",
+    "class": "Archelon"
+  },
+  "19": {
+    "name": "Archelon tail",
+    "price": "3500",
+    "class": "Archelon"
+  },
+  "20": {
+    "name": "Brachio skull",
+    "price": "6000",
+    "class": "Brachiosaurus"
+  },
+  "21": {
+    "name": "Brachio chest",
+    "price": "5500",
+    "class": "Brachiosaurus"
+  },
+  "22": {
+    "name": "Brachio pelvis",
+    "price": "5000",
+    "class": "Brachiosaurus"
+  },
+  "23": {
+    "name": "Brachio tail",
+    "price": "5500",
+    "class": "Brachiosaurus"
+  },
+  "24": {
+    "name": "Deinony torso",
+    "price": "3000",
+    "class": "Deinonychus"
+  },
+  "25": {
+    "name": "Deinony tail",
+    "price": "2500",
+    "class": "Deinonychus"
+  },
+  "26": {
+    "name": "Dimetrodon skull",
+    "price": "5500",
+    "class": "Dimetrodon"
+  },
+  "27": {
+    "name": "Dimetrodon torso",
+    "price": "5000",
+    "class": "Dimetrodon"
+  },
+  "28": {
+    "name": "Diplo skull",
+    "price": "5000",
+    "class": "Diplodocus"
+  },
+  "29": {
+    "name": "Diplo neck",
+    "price": "4500",
+    "class": "Diplodocus"
+  },
+  "30": {
+    "name": "Diplo chest",
+    "price": "4000",
+    "class": "Diplodocus"
+  },
+  "31": {
+    "name": "Diplo pelvis",
+    "price": "4500",
+    "class": "Diplodocus"
+  },
+  "32": {
+    "name": "Diplo tail",
+    "price": "5000",
+    "class": "Diplodocus"
+  },
+  "33": {
+    "name": "Diplo tail tip",
+    "price": "4000",
+    "class": "Diplodocus"
+  },
+  "34": {
+    "name": "Iguanodon skull",
+    "price": "4000",
+    "class": "Iguanodon"
+  },
+  "35": {
+    "name": "Iguanodon torso",
+    "price": "3500",
+    "class": "Iguanodon"
+  },
+  "36": {
+    "name": "Iguanodon tail",
+    "price": "3000",
+    "class": "Iguanodon"
+  },
+  "37": {
+    "name": "Mammoth skull",
+    "price": "3000",
+    "class": "Mammoth"
+  },
+  "38": {
+    "name": "Mammoth torso",
+    "price": "2500",
+    "class": "Mammoth"
+  },
+  "39": {
+    "name": "Megacero skull",
+    "price": "4500",
+    "class": "Megacerops"
+  },
+  "40": {
+    "name": "Megacero torso",
+    "price": "3500",
+    "class": "Megacerops"
+  },
+  "41": {
+    "name": "Megacero tail",
+    "price": "3000",
+    "class": "Megacerops"
+  },
+  "42": {
+    "name": "Left Megalo side",
+    "price": "4000",
+    "class": "Megaloceros"
+  },
+  "43": {
+    "name": "Right Megalo side",
+    "price": "5500",
+    "class": "Megaloceros"
+  },
+  "44": {
+    "name": "Ophthalmo skull",
+    "price": "2500",
+    "class": "Ophthalmosaurus"
+  },
+  "45": {
+    "name": "Ophthalmo torso",
+    "price": "2000",
+    "class": "Ophthalmosaurus"
+  },
+  "46": {
+    "name": "Pachysaurus skull",
+    "price": "4000",
+    "class": "Pachycephalosaurus"
+  },
+  "47": {
+    "name": "Pachysaurus tail",
+    "price": "3500",
+    "class": "Pachycephalosaurus"
+  },
+  "48": {
+    "name": "Parasaur skull",
+    "price": "3500",
+    "class": "Parasaurolophus"
+  },
+  "49": {
+    "name": "Parasaur torso",
+    "price": "3000",
+    "class": "Parasaurolophus"
+  },
+  "50": {
+    "name": "Parasaur tail",
+    "price": "2500",
+    "class": "Parasaurolophus"
+  },
+  "51": {
+    "name": "Plesio skull",
+    "price": "4000",
+    "class": "Plesiosaurus"
+  },
+  "52": {
+    "name": "Plesio tail",
+    "price": "4500",
+    "class": "Plesiosaurus"
+  },
+  "53": {
+    "name": "Plesio body",
+    "price": "4500",
+    "class": "Plesiosaurus"
+  },
+  "54": {
+    "name": "Ptera body",
+    "price": "4000",
+    "class": "Pteranodon"
+  },
+  "55": {
+    "name": "Right Ptera wing",
+    "price": "4500",
+    "class": "Pteranodon"
+  },
+  "56": {
+    "name": "Left Ptera wing",
+    "price": "4500",
+    "class": "Pteranodon"
+  },
+  "57": {
+    "name": "Quetzal torso",
+    "price": "4500",
+    "class": "Quetzalcoatlus"
+  },
+  "58": {
+    "name": "Right quetzal wing",
+    "price": "5000",
+    "class": "Quetzalcoatlus"
+  },
+  "59": {
+    "name": "Left quetzal wing",
+    "price": "5000",
+    "class": "Quetzalcoatlus"
+  },
+  "60": {
+    "name": "Sabertooth skull",
+    "price": "2500",
+    "class": "Sabertooth tiger"
+  },
+  "61": {
+    "name": "Sabertooth tail",
+    "price": "2000",
+    "class": "Sabertooth tiger"
+  },
+  "62": {
+    "name": "Spino skull",
+    "price": "4000",
+    "class": "Spinosaurus"
+  },
+  "63": {
+    "name": "Spino torso",
+    "price": "5000",
+    "class": "Spinosaurus"
+  },
+  "64": {
+    "name": "Spino tail",
+    "price": "4000",
+    "class": "Spinosaurus"
+  },
+  "65": {
+    "name": "Stego skull",
+    "price": "5000",
+    "class": "Stegosaurus"
+  },
+  "66": {
+    "name": "Stego torso",
+    "price": "4500",
+    "class": "Stegosaurus"
+  },
+  "67": {
+    "name": "Stego tail",
+    "price": "4000",
+    "class": "Stegosaurus"
+  },
+  "68": {
+    "name": "Tricera skull",
+    "price": "5500",
+    "class": "Triceratops"
+  },
+  "69": {
+    "name": "Tricera torso",
+    "price": "5000",
+    "class": "Triceratops"
+  },
+  "70": {
+    "name": "Tricera tail",
+    "price": "4500",
+    "class": "Triceratops"
+  },
+  "71": {
+    "name": "T-Rex skull",
+    "price": "6000",
+    "class": "Tyrannosaurus rex"
+  },
+  "72": {
+    "name": "T-Rex torso",
+    "price": "5500",
+    "class": "Tyrannosaurus rex"
+  },
+  "73": {
+    "name": "T-Rex tail",
+    "price": "500",
+    "class": "Tyrannosaurus rex"
+  }
+}

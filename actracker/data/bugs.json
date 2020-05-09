@@ -1,0 +1,1705 @@
+{
+  "1": {
+    "name": "Common Butterfly",
+    "location": "Flying",
+    "price": 160,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "southern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "2": {
+    "name": "Yellow Butterfly",
+    "location": "Flying",
+    "price": 160,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "southern": [
+      3,
+      4,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "3": {
+    "name": "Tiger Butterfly",
+    "location": "Flying",
+    "price": 240,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "4": {
+    "name": "Peacock Butterfly",
+    "location": "Flying by hybrid flowers",
+    "price": 2500,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "5": {
+    "name": "Common Bluebottle",
+    "location": "Flying",
+    "price": 300,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ]
+  },
+  "6": {
+    "name": "Paper Kite Butterfly",
+    "location": "Flying",
+    "price": 1000,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "7": {
+    "name": "Great Purple Emperor",
+    "location": "Flying",
+    "price": 3000,
+    "time": "4 a.m. - 7 p.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2
+    ]
+  },
+  "8": {
+    "name": "Monach Butterfly",
+    "location": "Flying",
+    "price": 140,
+    "time": "4 a.m. - 5 p.m.",
+    "northern": [
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      3,
+      4,
+      5
+    ]
+  },
+  "9": {
+    "name": "Emperor Butterfly",
+    "location": "Flying",
+    "price": 4000,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      6,
+      7,
+      8,
+      9,
+      12,
+      1,
+      2,
+      3
+    ],
+    "southern": [
+      12,
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "10": {
+    "name": "Agrias Butterfly",
+    "location": "Flying",
+    "price": 3000,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "11": {
+    "name": "Raja Brooke's Birdwing",
+    "location": "Flying by purple flowers",
+    "price": 2500,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      1,
+      2
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      6,
+      7,
+      8
+    ]
+  },
+  "12": {
+    "name": "Queen Alexandra's Birdwing",
+    "location": "Flying",
+    "price": 4000,
+    "time": "8 a.m. - 4 p.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "13": {
+    "name": "Moth",
+    "location": "Flying by light",
+    "price": 130,
+    "time": "7 p.m. - 4 a.m.",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "14": {
+    "name": "Atlas Moth",
+    "location": "On trees",
+    "price": 3000,
+    "time": "7 p.m. - 4 a.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "15": {
+    "name": "Madagascan Sunset Moth",
+    "location": "Flying",
+    "price": 2500,
+    "time": "8 a.m. - 4 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "16": {
+    "name": "Long Locust",
+    "location": "On ground",
+    "price": 200,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "17": {
+    "name": "Migratory Locust",
+    "location": "On ground",
+    "price": 600,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "18": {
+    "name": "Rice Grasshopper",
+    "location": "On ground",
+    "price": 160,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "19": {
+    "name": "Grasshopper",
+    "location": "On ground",
+    "price": 160,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      1,
+      2,
+      3
+    ]
+  },
+  "20": {
+    "name": "Cricket",
+    "location": "Dig at cricket noise",
+    "price": 130,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      3,
+      4,
+      5
+    ]
+  },
+  "21": {
+    "name": "Bell Cricket",
+    "location": "On ground",
+    "price": 430,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      9,
+      10
+    ],
+    "southern": [
+      3,
+      4
+    ]
+  },
+  "22": {
+    "name": "Mantis",
+    "location": "On flowers",
+    "price": 430,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "23": {
+    "name": "Orchid Mantis",
+    "location": "On white flowers",
+    "price": 2400,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "24": {
+    "name": "Honeybee",
+    "location": "Flying",
+    "price": 200,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "southern": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "25": {
+    "name": "Wasp",
+    "location": "Falls from shaking trees",
+    "price": 2500,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "26": {
+    "name": "Brown Cicada",
+    "location": "On trees",
+    "price": 250,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "27": {
+    "name": "Robust Cicada",
+    "location": "On trees",
+    "price": 300,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "28": {
+    "name": "Giant Cicada",
+    "location": "On trees",
+    "price": 600,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "29": {
+    "name": "Walker Cicada",
+    "location": "On trees",
+    "price": 400,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      8,
+      9
+    ],
+    "southern": [
+      2,
+      3
+    ]
+  },
+  "30": {
+    "name": "Evening Cicada",
+    "location": "On trees",
+    "price": 660,
+    "time": "4 a.m. - 8 a.m., 4 p.m. - 7 p.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "31": {
+    "name": "Cicada Shell",
+    "location": "On trees",
+    "price": 10,
+    "time": "all day",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "32": {
+    "name": "Red Dragonfly",
+    "location": "Flying",
+    "price": 180,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      9,
+      10
+    ],
+    "southern": [
+      3,
+      4
+    ]
+  },
+  "33": {
+    "name": "Darner Dragonfly",
+    "location": "Flying",
+    "price": 230,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "34": {
+    "name": "Banded Dragonfly",
+    "location": "Flying",
+    "price": 4500,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "35": {
+    "name": "Damselfly",
+    "location": "Flying",
+    "price": 500,
+    "time": "all day",
+    "northern": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "southern": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "36": {
+    "name": "Firefly",
+    "location": "Flying",
+    "price": 300,
+    "time": "7 p.m. - 4 a.m.",
+    "northern": [
+      6
+    ],
+    "southern": [
+      12
+    ]
+  },
+  "37": {
+    "name": "Mole Cricket",
+    "location": "Underground",
+    "price": 500,
+    "time": "all day",
+    "northern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "southern": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "38": {
+    "name": "Pondskater",
+    "location": "Ponds",
+    "price": 130,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "39": {
+    "name": "Diving Beetle",
+    "location": "Ponds and rivers",
+    "price": 800,
+    "time": "8 a.m. - 7 p.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "40": {
+    "name": "Giant Water Bug",
+    "location": "Ponds and rivers",
+    "price": 2000,
+    "time": "7 p.m. - 8 a.m.",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "41": {
+    "name": "Stinkbug",
+    "location": "On flowers",
+    "price": 120,
+    "time": "all day",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "42": {
+    "name": "Man-faced Stink Bug",
+    "location": "On flowers",
+    "price": 1000,
+    "time": "7 p.m. - 8 a.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "43": {
+    "name": "Ladybug",
+    "location": "On flowers",
+    "price": 200,
+    "time": "8 a.m. - 5 p.m.",
+    "northern": [
+      3,
+      4,
+      5,
+      6,
+      10
+    ],
+    "southern": [
+      9,
+      10,
+      11,
+      12,
+      4
+    ]
+  },
+  "44": {
+    "name": "Tiger Beetle",
+    "location": "On ground",
+    "price": 1500,
+    "time": "all day",
+    "northern": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "45": {
+    "name": "Jewel Beetle",
+    "location": "On trees",
+    "price": 2400,
+    "time": "all day",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ]
+  },
+  "46": {
+    "name": "Violin Beetle",
+    "location": "On tree stumps",
+    "price": 450,
+    "time": "all day",
+    "northern": [
+      5,
+      6,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      11,
+      12,
+      3,
+      4
+    ]
+  },
+  "47": {
+    "name": "Citrus Long-horned Beetle",
+    "location": "On tree stumps",
+    "price": 350,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "48": {
+    "name": "Rosalia Batesi Beetle",
+    "location": "On tree stumps",
+    "price": 3000,
+    "time": "all day",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "49": {
+    "name": "Blue Weevil Beetle",
+    "location": "",
+    "price": 800,
+    "time": "all day",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "50": {
+    "name": "Dung Beetle",
+    "location": "Pushing snowballs",
+    "price": 3000,
+    "time": "",
+    "northern": [
+      12,
+      1,
+      2
+    ],
+    "southern": [
+      6,
+      7,
+      8
+    ]
+  },
+  "51": {
+    "name": "Earth-boring Dung Beetle",
+    "location": "On ground",
+    "price": 300,
+    "time": "all day",
+    "northern": [
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      1,
+      2,
+      3
+    ]
+  },
+  "52": {
+    "name": "Scarab Beetle",
+    "location": "On trees",
+    "price": 10000,
+    "time": "11 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "53": {
+    "name": "Drone Beetle",
+    "location": "On trees",
+    "price": 200,
+    "time": "all day",
+    "northern": [
+      6,
+      7,
+      8
+    ],
+    "southern": [
+      12,
+      1,
+      2
+    ]
+  },
+  "54": {
+    "name": "Goliath Beetle",
+    "location": "On coconut trees",
+    "price": 8000,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "55": {
+    "name": "Saw Stag",
+    "location": "On trees",
+    "price": 2000,
+    "time": "all day",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "56": {
+    "name": "Miyama Stag",
+    "location": "On trees",
+    "price": 1000,
+    "time": "all day",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "57": {
+    "name": "Giant Stag",
+    "location": "On trees",
+    "price": 10000,
+    "time": "11 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "58": {
+    "name": "Rainbow Stag",
+    "location": "On trees",
+    "price": 6000,
+    "time": "7 p.m. - 8 a.m.",
+    "northern": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "59": {
+    "name": "Cyclommatus Stag",
+    "location": "On trees",
+    "price": 8000,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "60": {
+    "name": "Golden Stag",
+    "location": "On trees",
+    "price": 0,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "61": {
+    "name": "Giraffe Stag",
+    "location": "On trees",
+    "price": 0,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "62": {
+    "name": "Horned Dynastid",
+    "location": "On trees",
+    "price": 1350,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "63": {
+    "name": "Horned Atlas",
+    "location": "On trees",
+    "price": 8000,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "64": {
+    "name": "Horned Elephant",
+    "location": "On trees",
+    "price": 8000,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "65": {
+    "name": "Horned Herucles",
+    "location": "On trees",
+    "price": 0,
+    "time": "5 p.m. - 8 a.m.",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2
+    ]
+  },
+  "66": {
+    "name": "Walking Stick",
+    "location": "Falls from shaking trees",
+    "price": 600,
+    "time": "4 a.m. - 8 a.m., 5 p.m. - 7 p.m.",
+    "northern": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "67": {
+    "name": "Walking Leaf",
+    "location": "Near trees, disguised as furniture leaf",
+    "price": 600,
+    "time": "all day",
+    "northern": [
+      7,
+      8
+    ],
+    "southern": [
+      1,
+      2,
+      3
+    ]
+  },
+  "68": {
+    "name": "Bagworm",
+    "location": "Falls from shaking trees",
+    "price": 600,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "69": {
+    "name": "Ant",
+    "location": "On rotten food",
+    "price": 80,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "70": {
+    "name": "Hermit Crab",
+    "location": "Beach",
+    "price": 1000,
+    "time": "7 p.m. - 8 a.m.",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "71": {
+    "name": "Wharf Roach",
+    "location": "On rocks at beach",
+    "price": 200,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "72": {
+    "name": "Fly",
+    "location": "On trash items",
+    "price": 60,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "73": {
+    "name": "Mosquito",
+    "location": "Flying",
+    "price": 130,
+    "time": "5 p.m. - 4 a.m.",
+    "northern": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "southern": [
+      12,
+      1,
+      2,
+      3
+    ]
+  },
+  "74": {
+    "name": "Flea",
+    "location": "On villagers",
+    "price": 70,
+    "time": "all day",
+    "northern": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "southern": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "75": {
+    "name": "Snail",
+    "location": "On rocks (raining)",
+    "price": 250,
+    "time": "all day",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "76": {
+    "name": "Pill Bug",
+    "location": "Hit rocks",
+    "price": 250,
+    "time": "11 p.m. - 4 p.m.",
+    "northern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "southern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "77": {
+    "name": "Centipede",
+    "location": "Hit rocks",
+    "price": 300,
+    "time": "4 p.m. - 11 p.m.",
+    "northern": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "southern": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "78": {
+    "name": "Spider",
+    "location": "Falls from shaking trees",
+    "price": 480,
+    "time": "7 p.m. - 8 a.m.",
+    "northern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "southern": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "79": {
+    "name": "Tarantula",
+    "location": "On ground",
+    "price": 8000,
+    "time": "7 p.m. - 4 a.m.",
+    "northern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "southern": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "80": {
+    "name": "Scorpion",
+    "location": "On ground",
+    "price": 8000,
+    "time": "7 p.m. - 4 a.m.",
+    "northern": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "southern": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

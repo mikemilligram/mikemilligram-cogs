@@ -23,8 +23,12 @@ class Stonks(commands.Cog):
     async def stonk(self, ctx):
         await ctx.send("here is one (1) stonk for you")
 
-    @commands.command(help='weekday: 1 = monday, 2 = tuesday...\ntime: 1 = am, 2 = pm')
-    async def turnips(self, ctx, weekday: str, time: str, price: int):
+    @commands.group()
+    async def turnip(self, ctx):
+        pass
+
+    @turnip.command(help='weekday: 1 = monday, 2 = tuesday...\ntime: 1 = am, 2 = pm')
+    async def set(self, ctx, weekday: str, time: str, price: int):
         if 0 < int(weekday) < 7 and 0 < int(time) < 3 and 1000 > price > 0:
             ts = weekday+time
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.prices.set_raw(ts, value=price)
@@ -32,7 +36,7 @@ class Stonks(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @commands.command()
+    @turnip.command()
     async def list(self, ctx, member: discord.Member = None):
         if member is not None:
             turnips = await self.config.member(member).turnips()
@@ -40,9 +44,9 @@ class Stonks(commands.Cog):
             turnips = await self.config.member(ctx.author).turnips()
         name = (member.display_name if member is not None else ctx.author.display_name)
         header = name + "'s turnip prices"
-        await ctx.send(embed=discord.Embed(colour=discord.Colour.from_rgb(0,255,0), title=header, description='```' + get_overview(turnips) + '```'))
+        await ctx.send(embed=discord.Embed(colour=discord.Colour.from_rgb(0, 255, 0), title=header, description='```' + get_overview(turnips) + '```'))
 
-    @commands.command()
+    @turnip.command()
     async def link(self, ctx, member: discord.Member = None):
         if member is not None:
             turnips = await self.config.member(member).turnips()
@@ -50,7 +54,7 @@ class Stonks(commands.Cog):
             turnips = await self.config.member(ctx.author).turnips()
         await ctx.send(get_link(turnips))
 
-    @commands.command(help='0 = fluctuating\n1 = large spike\n2 = decreasing\n3 = small spike')
+    @turnip.command(help='0 = fluctuating\n1 = large spike\n2 = decreasing\n3 = small spike')
     async def pattern(self, ctx, pattern: int):
         if 0 <= pattern <= 3:
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.last_pattern.set(pattern)
@@ -58,12 +62,12 @@ class Stonks(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @commands.command()
+    @turnip.command()
     async def resetpattern(self, ctx):
         await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.last_pattern.set(-1)
         await ctx.send("<:turnip:702407533377224744>")
 
-    @commands.command()
+    @turnip.command()
     async def islandprice(self, ctx, price: int):
         if price > 0:
             await self.config.member_from_ids(ctx.guild.id, ctx.author.id).turnips.sunday.set(price)
@@ -71,7 +75,7 @@ class Stonks(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @commands.command()
+    @turnip.command()
     async def reset(self, ctx):
         await self.config.member_from_ids(ctx.guild.id, ctx.author.id).clear()
         await ctx.send("<:turnip:702407533377224744>")
@@ -80,6 +84,7 @@ class Stonks(commands.Cog):
 weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 times = ['am', 'pm']
 patterns = ['fluctuating', 'large spike', 'decreasing', 'small spike']
+
 
 def get_link(turnips):
     baseurl = "https://turnipprophet.io/?prices="
