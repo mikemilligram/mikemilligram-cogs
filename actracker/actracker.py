@@ -130,7 +130,7 @@ class ACTracker(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @commands.group()
+    @list.group()
     async def filter(self, ctx):
         pass
 
