@@ -26,6 +26,10 @@ class ACTracker(commands.Cog):
         self.config.register_member(**default_member)
 
     @commands.group()
+    async def tracker(self, ctx):
+        pass
+
+    @commands.group()
     async def donate(self, ctx):
         pass
 
@@ -129,7 +133,7 @@ class ACTracker(commands.Cog):
         pass
 
     @list_filter.command(name='fish')
-    async def filter_fish(self, ctx, month: str, flt: str, northern: bool = True ):
+    async def filter_fish(self, ctx, month: str, flt: str, northern: bool = True):
         fish_data = await self.config.fish()
         donated_fish = await self.config.member(ctx.author).donated_fish()
         if month in MONTHS.keys() or month == 'all' and flt in ['all', 'missing', 'new']:
@@ -148,6 +152,45 @@ class ACTracker(commands.Cog):
             await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
         else:
             await ctx.send("<:fubk:702961960786067522>")
+
+    @commands.group(name='missing')
+    async def missing(self, ctx):
+        pass
+
+    @missing.command(name='fish')
+    async def missing_fish(self, ctx):
+        fish_data = await self.config.fish()
+        donated_fish = await self.config.member(ctx.author).donated_fish()
+        overview = get_overview('fish', donated_fish, filter_missing(donated_fish, fish_data))
+        await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
+
+    @missing.command(name='bugs')
+    async def missing_bugs(self, ctx):
+        bugs_data = await self.config.bugs()
+        donated_bugs = await self.config.member(ctx.author).donated_bugs()
+        overview = get_overview('bugs', donated_bugs, filter_missing(donated_bugs, bugs_data))
+        await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
+
+    @missing.command(name='fossils')
+    async def missing_fossils(self, ctx):
+        fossils_data = await self.config.fossils()
+        donated_fossils = await self.config.member(ctx.author).donated_fossils()
+        overview = get_overview_fossils(donated_fossils, filter_missing(donated_fossils, fossils_data))
+        await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
+
+    @tracker.command(name='stats')
+    async def stats(self, ctx):
+        embed = discord.Embed(title=f"{ctx.author.nick}'s stats")
+        fish = await self.config.fish()
+        bugs = await self.config.bugs()
+        fossils = await self.config.fossils()
+        donated_fish = await self.config.member(ctx.author).donated_fish()
+        donated_bugs = await self.config.member(ctx.author).donated_bugs()
+        donated_fossils = await self.config.member(ctx.author).donated_fossils()
+        embed.add_field(name='fish', value=f'{len(donated_fish)} / {len(fish)}')
+        embed.add_field(name='bugs', value=f'{len(donated_bugs)} / {len(bugs)}')
+        embed.add_field(name='fossils', value=f'{len(donated_fossils)} / {len(fossils)}')
+        await ctx.send(embed=embed)
 
 
 MONTHS = {'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6, 'july': 7,
