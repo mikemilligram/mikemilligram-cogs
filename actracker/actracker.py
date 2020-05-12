@@ -178,9 +178,9 @@ class ACTracker(commands.Cog):
         overview = get_overview_fossils(donated_fossils, filter_missing(donated_fossils, fossils_data))
         await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
 
-    @tracker.command(name='stats')
-    async def stats(self, ctx):
-        embed = discord.Embed(title=f"{ctx.author.nick}'s stats")
+    @commands.command(name='progress')
+    async def progress(self, ctx):
+        embed = discord.Embed(title=f"{ctx.author.nick}'s progress")
         fish = await self.config.fish()
         bugs = await self.config.bugs()
         fossils = await self.config.fossils()
