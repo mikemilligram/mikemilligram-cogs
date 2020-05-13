@@ -180,7 +180,8 @@ class ACTracker(commands.Cog):
 
     @commands.command(name='progress')
     async def progress(self, ctx):
-        embed = discord.Embed(title=f"{ctx.author.nick}'s progress")
+        name = ctx.author.nick if ctx.author.nick else ctx.author.name
+        embed = discord.Embed(title=f"{name}'s progress")
         fish = await self.config.fish()
         bugs = await self.config.bugs()
         fossils = await self.config.fossils()
@@ -254,7 +255,7 @@ def get_overview_fossils(donations: dict, data: dict):
         info['id'] = f_id
         bundled[info['class']].append(info)
 
-    pages = []
+    page = []
     embed = discord.Embed(title=f'fossil tracker')
     counter = 1
     for name, parts in bundled.items():
@@ -263,14 +264,14 @@ def get_overview_fossils(donations: dict, data: dict):
             fossil.append(('✅' if part['id'] in donations.keys() else '❌') + f' {part["id"]} ' + part['name'].lower())
         embed.add_field(name=name, value='\n'.join(fossil))
         if counter % 9 == 0:
-            pages.append(embed)
+            page.append(embed)
             embed = discord.Embed(title=f'fossil tracker')
         counter += 1
 
-    if len(pages) > 0:
-        pages.append(embed)
+    if len(embed.fields) > 0:
+        page.append(embed)
 
-    return pages
+    return page
 
 
 def filter_collectibles(donated: dict, data: dict, month: str, flt: str, northern: bool):
