@@ -26,25 +26,8 @@ class ACTracker(commands.Cog):
         self.config.register_member(**default_member)
 
     @commands.group()
-    async def tracker(self, ctx):
-        pass
-
-    @commands.group()
     async def donate(self, ctx):
         pass
-
-    @donate.command(name='bug')
-    async def donate_bug(self, ctx, bug_id: int):
-        bug_data = await self.config.bugs()
-        if 0 < bug_id <= len(bug_data):
-            bugs = await self.config.member(ctx.author).donated_bugs()
-            if str(bug_id) not in bugs.keys():
-                await self.config.member(ctx.author).donated_bugs.set_raw(bug_id, value=1)
-                await ctx.send('you donated one (1) ' + bug_data[str(bug_id)]['name'].lower())
-            else:
-                await ctx.send("you already donated this, idiot")
-        else:
-            await ctx.send("<:fubk:702961960786067522>")
 
     @donate.command(name='fish')
     async def donate_fish(self, ctx, fish_id: int):
@@ -54,6 +37,19 @@ class ACTracker(commands.Cog):
             if str(fish_id) not in fish.keys():
                 await self.config.member(ctx.author).donated_fish.set_raw(fish_id, value=1)
                 await ctx.send('you donated one (1) ' + fish_data[str(fish_id)]['name'].lower())
+            else:
+                await ctx.send("you already donated this, idiot")
+        else:
+            await ctx.send("<:fubk:702961960786067522>")
+
+    @donate.command(name='bug')
+    async def donate_bug(self, ctx, bug_id: int):
+        bug_data = await self.config.bugs()
+        if 0 < bug_id <= len(bug_data):
+            bugs = await self.config.member(ctx.author).donated_bugs()
+            if str(bug_id) not in bugs.keys():
+                await self.config.member(ctx.author).donated_bugs.set_raw(bug_id, value=1)
+                await ctx.send('you donated one (1) ' + bug_data[str(bug_id)]['name'].lower())
             else:
                 await ctx.send("you already donated this, idiot")
         else:
@@ -71,6 +67,49 @@ class ACTracker(commands.Cog):
                 await ctx.send("you already donated this, idiot")
         else:
             await ctx.send("<:fubk:702961960786067522>")
+
+    @commands.group(name='undonate')
+    async def undonate(self, ctx):
+        pass
+
+    @undonate.command(name='fish')
+    async def undonate_fish(self, ctx, fish_id: int):
+        fish_data = await self.config.fish()
+        if 0 < fish_id <= len(fish_data):
+            fish = await self.config.member(ctx.author).donated_fish()
+            if str(fish_id) in fish.keys():
+                await self.config.member(ctx.author).donated_fish.clear_raw(fish_id)
+                await ctx.send('you undonated one (1) ' + fish_data[str(fish_id)]['name'].lower())
+                return
+
+        # bad input
+        await ctx.send("<:fubk:702961960786067522>")
+
+    @undonate.command(name='bug')
+    async def undonate_bug(self, ctx, bug_id: int):
+        bug_data = await self.config.bugs()
+        if 0 < bug_id <= len(bug_data):
+            bugs = await self.config.member(ctx.author).donated_bugs()
+            if str(bug_id) in bugs.keys():
+                await self.config.member(ctx.author).donated_bugs.clear_raw(bug_id)
+                await ctx.send('you undonated one (1) ' + bug_data[str(bug_id)]['name'].lower())
+                return
+
+            # bad input
+            await ctx.send("<:fubk:702961960786067522>")
+
+    @undonate.command(name='fossil')
+    async def undonate_fossil(self, ctx, fossil_id: int):
+        fossil_data = await self.config.fossils()
+        if 0 < fossil_id <= len(fossil_data):
+            fossils = await self.config.member(ctx.author).donated_fossils()
+            if str(fossil_id) in fossils.keys():
+                await self.config.member(ctx.author).donated_fossils.clear_raw(fossil_id)
+                await ctx.send('you undonated one (1) ' + fossil_data[str(fossil_id)]['name'].lower())
+                return
+
+        # bad input
+        await ctx.send("<:fubk:702961960786067522>")
 
     @commands.group()
     async def list(self, ctx):
@@ -128,27 +167,51 @@ class ACTracker(commands.Cog):
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @list.group(name='filter')
-    async def list_filter(self, ctx):
+    @commands.group(name='month')
+    async def month_critters(self, ctx):
         pass
 
-    @list_filter.command(name='fish')
-    async def filter_fish(self, ctx, month: str, flt: str, northern: bool = True):
+    @month_critters.command(name='fish')
+    async def month_fish(self, ctx, month: str, southern: bool = False):
         fish_data = await self.config.fish()
         donated_fish = await self.config.member(ctx.author).donated_fish()
-        if month in MONTHS.keys() or month == 'all' and flt in ['all', 'missing', 'new']:
-            overview = get_overview('fish', donated_fish, filter_collectibles(donated_fish, fish_data, month, flt, northern))
+        if month in MONTHS.keys():
+            overview = get_overview('fish', donated_fish, get_critters_by_month(fish_data, month, southern=southern))
             await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
         else:
             await ctx.send("<:fubk:702961960786067522>")
 
-    @list_filter.command(name='bugs')
-    async def filter_bugs(self, ctx, month: str, flt: str, northern: bool = True):
+    @month_critters.command(name='bugs')
+    async def month_bugs(self, ctx, month: str, southern: bool = False):
         bugs_data = await self.config.bugs()
         donated_bugs = await self.config.member(ctx.author).donated_bugs()
-        if month in MONTHS.keys() or month == 'all' and flt in ['all', 'missing', 'new']:
-            overview = get_overview('bug', donated_bugs,
-                                    filter_collectibles(donated_bugs, bugs_data, month, flt, northern))
+        if month in MONTHS.keys():
+            overview = get_overview('bugs', donated_bugs, get_critters_by_month(bugs_data, month, southern=southern))
+            await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
+        else:
+            await ctx.send("<:fubk:702961960786067522>")
+
+    @commands.group(name='new')
+    async def new_critters(self, ctx):
+        pass
+
+    @new_critters.command(name='fish')
+    async def new_fish(self, ctx, month: str, southern: bool = False):
+        fish_data = await self.config.fish()
+        donated_fish = await self.config.member(ctx.author).donated_fish()
+        if month in MONTHS.keys():
+            overview = get_overview('fish', donated_fish, get_critters_by_month(fish_data, month, new=True,southern=southern))
+            await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
+        else:
+            await ctx.send("<:fubk:702961960786067522>")
+
+    @new_critters.command(name='bugs')
+    async def new_bugs(self, ctx, month: str, southern: bool = False):
+        bugs_data = await self.config.bugs()
+        donated_bugs = await self.config.member(ctx.author).donated_bugs()
+        if month in MONTHS.keys():
+            overview = get_overview('fish', donated_bugs,
+                                    get_critters_by_month(bugs_data, month, new=True, southern=southern))
             await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
         else:
             await ctx.send("<:fubk:702961960786067522>")
@@ -179,15 +242,17 @@ class ACTracker(commands.Cog):
         await menu(ctx, overview, controls=copy.deepcopy(DEFAULT_CONTROLS))
 
     @commands.command(name='progress')
-    async def progress(self, ctx):
-        name = ctx.author.nick if ctx.author.nick else ctx.author.name
+    async def progress(self, ctx, user: discord.Member = None):
+        if user is None:
+            user = ctx.author
+        name = user.nick if user.nick else user.name
         embed = discord.Embed(title=f"{name}'s progress")
         fish = await self.config.fish()
         bugs = await self.config.bugs()
         fossils = await self.config.fossils()
-        donated_fish = await self.config.member(ctx.author).donated_fish()
-        donated_bugs = await self.config.member(ctx.author).donated_bugs()
-        donated_fossils = await self.config.member(ctx.author).donated_fossils()
+        donated_fish = await self.config.member(user).donated_fish()
+        donated_bugs = await self.config.member(user).donated_bugs()
+        donated_fossils = await self.config.member(user).donated_fossils()
         embed.add_field(name='fish', value=f'{len(donated_fish)} / {len(fish)}')
         embed.add_field(name='bugs', value=f'{len(donated_bugs)} / {len(bugs)}')
         embed.add_field(name='fossils', value=f'{len(donated_fossils)} / {len(fossils)}')
@@ -274,15 +339,13 @@ def get_overview_fossils(donations: dict, data: dict):
     return page
 
 
-def filter_collectibles(donated: dict, data: dict, month: str, flt: str, northern: bool):
-    hs = 'northern' if northern else 'southern'
-    if flt == 'missing':
-        data = filter_missing(donated, data)
+def get_critters_by_month(data: dict, month: str, new: bool = False, southern: bool = False):
+    hs = 'southern' if southern else 'northern'
     if month in MONTHS:
         by_month = {}
         for name, info in data.items():
             if MONTHS[month] in info[hs]:
-                if flt == 'new':
+                if new:
                     if MONTHS[month] == 1:
                         last = 12
                     else:
