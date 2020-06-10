@@ -33,7 +33,7 @@ class Nintendo(commands.Cog):
         users = await self.config.all_members(ctx.guild)
         embed = discord.Embed(title = 'switch codes')
         for userid, data in users.items():
-            user = discord.Client.get_user(userid)
+            user = discord.Client.get_user(id=userid)
             name = user.nick if user.nick else user.name
             embed.add_field(name = name, value = data['switchcode'])
         await ctx.send(embed=embed)
