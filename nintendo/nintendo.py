@@ -4,8 +4,8 @@ import discord
 
 
 class Nintendo(commands.Cog):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, bot):
+        self.bot = bot
         self.config = Config.get_conf(self, identifier=1806)
         default_member = {
             'switchcode': 'This user has not registered a switch code'
@@ -30,6 +30,7 @@ class Nintendo(commands.Cog):
 
     @switch.command(name='list', help = "display the codes of everyone in the server")
     async def list_codes(self, ctx):
+        await self.bot.wait_until_ready()
         users = await self.config.all_members(ctx.guild)
         embed = discord.Embed(title = 'switch codes')
         for userid, data in users.items():
