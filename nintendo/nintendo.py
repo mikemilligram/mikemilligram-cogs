@@ -26,8 +26,8 @@ class Nintendo(commands.Cog):
         user = member if member else ctx.author
         code = await self.config.member_from_ids(ctx.guild.id, user.id).switchcode()
         name = user.nick if user.nick else user.name
-        embed = discord.Embed(title=f"{name}'s switch code")
-        embed.add_field(name=' ', value=code)
+        embed = discord.Embed(title=name)
+        embed.add_field(name='switch code', value=code)
         await ctx.send(embed=embed)
 
     @switch.command(name='list', help = "display the codes of everyone in the server")
