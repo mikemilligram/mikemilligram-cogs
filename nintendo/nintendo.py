@@ -1,6 +1,7 @@
 from redbot.core import commands
 from redbot.core import Config
 import discord
+from discord.utils import get
 
 
 class Nintendo(commands.Cog):
@@ -33,7 +34,7 @@ class Nintendo(commands.Cog):
         users = await self.config.all_members(ctx.guild)
         embed = discord.Embed(title = 'switch codes')
         for userid, data in users.items():
-            user = await self.config.member_from_ids(ctx.guild.id, userid)
+            user = get(users, id=userid)
             name = user.nick if user.nick else user.name
             embed.add_field(name = name, value = data['switchcode'])
         await ctx.send(embed=embed)
