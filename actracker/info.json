@@ -1,1 +1,10 @@
-{}
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "actracker",
+    "short" : "track your bugs, fish and fossils",
+    "description" : "keep lists of all donated bugs, fish and fossils, sort them and view overall progress",
+    "tags" : ["fun"],
+    "requirements" : [],
+    "hidden" : false
+}

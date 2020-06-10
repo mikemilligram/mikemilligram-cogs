@@ -3,7 +3,7 @@ from redbot.core import Config
 import discord
 
 
-class Nintendo(commands.Cog):
+class Switch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=1806)
@@ -16,7 +16,7 @@ class Nintendo(commands.Cog):
     async def switch(self, ctx):
         pass
 
-    @switch.command(name='set', help = 'register or change your nintendo switch code')
+    @switch.command(name='set', help = 'register or change your switch switch code')
     async def set_code(self, ctx, code: str):
         await self.config.member_from_ids(ctx.guild.id, ctx.author.id).switchcode.set(code)
         await ctx.send("your switch code has been set")

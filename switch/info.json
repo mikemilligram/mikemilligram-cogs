@@ -1,0 +1,10 @@
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "switch",
+    "short" : "share your switch codes with your friends",
+    "description" : "register your switch codes and display them in a list",
+    "tags" : ["tools"],
+    "requirements" : [],
+    "hidden" : false
+}
