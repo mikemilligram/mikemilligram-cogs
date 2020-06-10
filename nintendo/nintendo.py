@@ -30,7 +30,7 @@ class Nintendo(commands.Cog):
 
     @nintendo.command(help = "display the codes of everyone in the server")
     async def list_codes(self, ctx):
-        users = await self.conf.all_members(ctx.guild)
+        users = await self.config.all_members(ctx.guild)
         embed = discord.Embed(title = 'switch codes')
         for userid, data in users.items():
             embed.add_field(name = userid, value = str(data))
