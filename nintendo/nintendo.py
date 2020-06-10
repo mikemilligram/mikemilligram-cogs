@@ -22,8 +22,8 @@ class Nintendo(commands.Cog):
         await ctx.send("your switch code has been set")
 
     @nintendo.command(help = "display your own or someone else's switch code")
-    async def display_code(self, ctx, member: discord.Member = none):
-        user = (member if member else ctx.author)
+    async def display_code(self, ctx, member: discord.Member = None):
+        user = member if member else ctx.author
         code = await self.config.member_from_ids(ctx.guild.id, user.id).switchcode()
         name = user.nick if user.nick else user.name
         await ctx.send(f"{name}'s switch code: " + code)
