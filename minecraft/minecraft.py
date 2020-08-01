@@ -32,7 +32,7 @@ class Minecraft(commands.Cog):
     async def location(self, ctx):
         pass
 
-    @nether_hub.command()
+    @hub.command()
     async def list(self, ctx):
         async with self.lock:
             connections = await self.config.guild(ctx.guild).connections()
@@ -44,7 +44,7 @@ class Minecraft(commands.Cog):
                             inline = True)
         return await ctx.send(embed=embed)
 
-    @nether_hub.command()
+    @hub.command()
     async def add(self, ctx, name: str, nether_x: int, nether_z: int, overworld_x: int, overworld_y: int,
                   overworld_z: int):
         nether_portal = {'x': nether_x, 'z': nether_z}
