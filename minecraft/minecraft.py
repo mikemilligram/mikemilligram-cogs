@@ -1,11 +1,13 @@
 from redbot.core import commands
 from redbot.core import Config
 import discord
+import asyncio
 
 
 class Minecraft(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.lock = asyncio.Lock()
         self.config = Config.get_conf(self, identifier=141197)
         # default_member = {
         #
