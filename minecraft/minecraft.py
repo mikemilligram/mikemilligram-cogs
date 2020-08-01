@@ -36,7 +36,7 @@ class Minecraft(commands.Cog):
         for connection, portals in connections.items():
             embed.add_field(name=connection.title(), value=f"test", inline=True)
             embed.add_field(name=f"{portals[0]['x']} | {portals[0]['z']}", value="Nether", inline=True)
-            embed.add_field(name = f"{portals[1]['x']} | {portals[1]['y']} | {portals[1]['y']}", value = "Overworld",
+            embed.add_field(name = f"{portals[1]['x']} | {portals[1]['y']} | {portals[1]['z']}", value = "Overworld",
                             inline = True)
         return await ctx.send(embed=embed)
 
