@@ -1,0 +1,10 @@
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "minecraft",
+    "short" : "location tracker",
+    "description" : "mark coordinates of places and register nether portal connections",
+    "tags" : ["tools"],
+    "requirements" : [],
+    "hidden" : false
+}
