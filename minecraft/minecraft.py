@@ -43,4 +43,4 @@ class Minecraft(commands.Cog):
             return await ctx.send("There is already a connection with that name")
         else:
             data['connections'][name] = [nether_portal, overworld_portal]
-        await self.config.guild(ctx.guild).connections.set(data['connection'])
+        await self.config.guild(ctx.guild).connections.set(data['connections'])
