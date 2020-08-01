@@ -9,14 +9,12 @@ class Minecraft(commands.Cog):
         super().__init__(*args, **kwargs)
         self.lock = asyncio.Lock()
         self.config = Config.get_conf(self, identifier=141197)
-        # default_member = {
-        #
-        # }
-        # default_guild = {
-        #
-        # }
+        # default_member = {}
+        default_guild = {
+            'connections': {}
+        }
         # self.config.register_member(**default_member)
-        # self.config.register_guild(**default_guild)
+        self.config.register_guild(**default_guild)
 
     @commands.group(aliases=['mc'])
     async def minecraft(self, ctx):
