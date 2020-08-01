@@ -32,8 +32,8 @@ class Minecraft(commands.Cog):
     async def location(self, ctx):
         pass
 
-    @hub.command()
-    async def list(self, ctx):
+    @hub.command(name="list")
+    async def hub_list(self, ctx):
         async with self.lock:
             connections = await self.config.guild(ctx.guild).connections()
         embed = discord.Embed(title="NETHER HUB")
@@ -44,8 +44,8 @@ class Minecraft(commands.Cog):
                             inline = True)
         return await ctx.send(embed=embed)
 
-    @hub.command()
-    async def add(self, ctx, name: str, nether_x: int, nether_z: int, overworld_x: int, overworld_y: int,
+    @hub.command(name="add")
+    async def hub_add(self, ctx, name: str, nether_x: int, nether_z: int, overworld_x: int, overworld_y: int,
                   overworld_z: int):
         nether_portal = {'x': nether_x, 'z': nether_z}
         overworld_portal = {'x': overworld_x, 'y': overworld_y, 'z': overworld_z}
@@ -58,8 +58,8 @@ class Minecraft(commands.Cog):
         await self.config.guild(ctx.guild).connections.set(connections)
         return await ctx.send("The connection has been registered.")
 
-    @location.command()
-    async def list(self, ctx):
+    @location.command(name="list")
+    async def location_list(self, ctx):
         async with self.lock:
             locations = await self.config.guild(ctx.guild).locations()
         embed = discord.Embed(title = "LOCATIONS")
@@ -69,8 +69,8 @@ class Minecraft(commands.Cog):
                             inline = True)
         return await ctx.send(embed = embed)
 
-    @location.command()
-    async def add(self, ctx, name: str, x: int, y: int, z: int):
+    @location.command(name="add")
+    async def location_add(self, ctx, name: str, x: int, y: int, z: int):
         location = {'x': x, 'y': y, 'z': z}
         async with self.lock:
             locations = await self.config.guild(ctx.guild).locations()
@@ -78,5 +78,5 @@ class Minecraft(commands.Cog):
             return await ctx.send("There is already a location with that name.")
         else:
             locations[name.lower()] = location
-        await self.config.guild(ctx.guild).connections.set(locations)
+        await self.config.guild(ctx.guild).locations.set(locations)
         return await ctx.send("The location has been registered.")
