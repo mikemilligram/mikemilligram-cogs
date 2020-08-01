@@ -52,11 +52,20 @@ class Minecraft(commands.Cog):
         async with self.lock:
             connections = await self.config.guild(ctx.guild).connections()
         if name.lower() in connections.keys():
-            return await ctx.send("There is already a connection with that name.")
-        else:
-            connections[name.lower()] = [nether_portal, overworld_portal]
+            return await ctx.send("There is already a connection with this name.")
+        connections[name.lower()] = [nether_portal, overworld_portal]
         await self.config.guild(ctx.guild).connections.set(connections)
         return await ctx.send("The connection has been registered.")
+
+    @hub.command(name = "remove")
+    async def hub_remove(self, ctx, name):
+        async with self.lock:
+            connections = await self.config.guild(ctx.guild).connections()
+        if name.lower() not in connections.keys():
+            return await ctx.send("There is no connection with this name.")
+        del connections[name.lower()]
+        await self.config.guild(ctx.guild).connections.set(connections)
+        return await ctx.send("The connection has been removed.")
 
     @location.command(name="list")
     async def location_list(self, ctx):
@@ -73,8 +82,17 @@ class Minecraft(commands.Cog):
         async with self.lock:
             locations = await self.config.guild(ctx.guild).locations()
         if name.lower() in locations.keys():
-            return await ctx.send("There is already a location with that name.")
-        else:
-            locations[name.lower()] = location
+            return await ctx.send("There is already a location with this name.")
+        locations[name.lower()] = location
         await self.config.guild(ctx.guild).locations.set(locations)
         return await ctx.send("The location has been registered.")
+
+    @location.command(name="remove")
+    async def location_remove(self, ctx, name):
+        async with self.lock:
+            locations = await self.config.guild(ctx.guild).locations()
+        if name.lower() not in locations.keys():
+            return await ctx.send("There is no location with this name.")
+        del locations[name.lower()]
+        await self.config.guild(ctx.guild).locations.set(locations)
+        return await ctx.send("The location has been removed.")
