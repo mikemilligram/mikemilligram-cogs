@@ -17,15 +17,15 @@ class Minecraft(commands.Cog):
         # self.config.register_guild(**default_guild)
 
     @commands.group(aliases=['mc'])
-    async def minecraft(self):
+    async def minecraft(self, ctx):
         pass
 
     @minecraft.group(aliases=['nether', 'hub'])
-    async def nether_hub(self):
+    async def nether_hub(self, ctx):
         pass
 
     @minecraft.group()
-    async def locations(self):
+    async def locations(self, ctx):
         pass
 
     @nether_hub.command()
