@@ -35,8 +35,8 @@ class Minecraft(commands.Cog):
 
     @nether_hub.command()
     async def add(self, ctx, name: str, nether_x: int, nether_z: int, overworld_x: int, overworld_y: int, overworld_z: int):
-        nether_portal = {x: nether_x, z: nether_z}
-        overworld_portal = {x: overworld_x, y: overworld_y, z: overworld_z}
+        nether_portal = {'x': nether_x, 'z': nether_z}
+        overworld_portal = {'x': overworld_x, 'y': overworld_y, 'z': overworld_z}
         async with self.lock:
             data = await self.config.guild(ctx.guild).all()
         if name in data['connections'].keys():
