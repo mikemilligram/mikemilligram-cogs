@@ -38,7 +38,7 @@ class Minecraft(commands.Cog):
             connections = await self.config.guild(ctx.guild).connections()
         embed = discord.Embed(title="NETHER HUB")
         for connection, portals in connections.items():
-            embed.add_field(name=connection.title(), value=f"\\a", inline=True)
+            embed.add_field(name=connection.title(), value=f"\a", inline=True)
             embed.add_field(name=f"{portals[0]['x']} | {portals[0]['z']}", value="Nether", inline=True)
             embed.add_field(name = f"{portals[1]['x']} | {portals[1]['y']} | {portals[1]['z']}", value = "Overworld",
                             inline = True)
@@ -64,7 +64,7 @@ class Minecraft(commands.Cog):
             locations = await self.config.guild(ctx.guild).locations()
         embed = discord.Embed(title = "LOCATIONS")
         for location, coords in locations.items():
-            embed.add_field(name = location.title(), value = "\\a", inline = True)
+            embed.add_field(name = location.title(), value = "\a", inline = True)
             embed.add_field(name = f"{coords['x']} | {coords['y']} | {coords['z']}", value = "Coordinates",
                             inline = True)
         return await ctx.send(embed = embed)
