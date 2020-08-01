@@ -34,7 +34,7 @@ class Minecraft(commands.Cog):
             connections = await self.config.guild(ctx.guild).connections()
             embed = discord.Embed(title="NETHER HUB")
         for connection, portals in connections.items():
-            embed.add_field(name=name.title(), inline=True)
+            embed.add_field(name=connection.title(), inline=True)
             embed.add_field(name=f"{portals[0]['x']} | {portals[0]['z']}", value="Nether", inline=True)
             embed.add_field(name = f"{portals[1]['x']} | {portals[1]['y']} | {portals[1]['y']}", value = "Overworld",
                             inline = True)
