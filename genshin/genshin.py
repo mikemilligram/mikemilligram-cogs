@@ -28,6 +28,9 @@ class Genshin(commands.Cog):
         for level in levels:
             domains = math.ceil((level - current_bronze) / average_gain)
             condensed = math.ceil(((level - current_bronze) / average_gain) / 2)
-            output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
+            if domains <= 0:
+                output += f"{tier}/{tier}/{tier}: -\n"
+            else:
+                output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
             tier += 1
         await ctx.send(output)
