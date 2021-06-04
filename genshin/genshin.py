@@ -2,7 +2,6 @@ from redbot.core import commands
 from redbot.core import Config
 import math
 
-
 class Genshin(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,19 +16,17 @@ class Genshin(commands.Cog):
         self.config.register_member(**default_member)
 
     @commands.command(name='talents')
-    async def talents(self, ctx, gold: int, silver: int, bronze: int, goal: int):
+    async def talents(self, ctx, gold: int, silver: int, bronze: int):
 
-        if not 5 < goal < 11:
-            await ctx.send("goal needs to be between 6 and 10")
-            return
         levels = [198, 306, 468, 792, 1224]
         average_gain = 9.7
         current_bronze = gold * 9 + silver * 3 + bronze
 
-        needed = levels[goal-6]
-
-        domains = math.ceil((needed - current_bronze) / average_gain)
-        condensed = math.ceil(((needed - current_bronze) / average_gain) / 2)
-
-        await ctx.send(f"to reach talent level {goal}/{goal}/{goal} you need to claim {domains} domains ({condensed} "
-                       f"if using condensed resin)")
+        tier = 6
+        output = ""
+        for level in levels:
+            domains = math.ceil((level - current_bronze) / average_gain)
+            condensed = math.ceil(((level - current_bronze) / average_gain) / 2)
+            output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
+            tier += 1
+        await ctx.send(output)
