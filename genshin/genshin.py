@@ -19,7 +19,7 @@ class Genshin(commands.Cog):
         self.config.register_global(**default_global)
         self.config.register_member(**default_member)
 
-    @donate.command(name='talents')
+    @commands.command(name='talents')
     async def talents(self, ctx, gold: int, silver: int, bronze: int, goal: int):
 
         if not 5 < goal < 11:
