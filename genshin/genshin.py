@@ -2,6 +2,7 @@ from redbot.core import commands
 from redbot.core import Config
 import math
 
+
 class Genshin(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
