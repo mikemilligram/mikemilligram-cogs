@@ -7,7 +7,6 @@ class Genshin(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.config = Config.get_conf(self, identifier=3547)
-        self.data = bundled_data_path(self)
         default_global = {
 
         }
