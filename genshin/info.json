@@ -1,0 +1,10 @@
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "genshin",
+    "short" : "some tools to do genshin math",
+    "description" : "just some things to make life easier and not have to whip out the ol' calculateor for ever",
+    "tags" : ["genshin"],
+    "requirements" : [],
+    "hidden" : false
+}
