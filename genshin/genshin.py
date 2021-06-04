@@ -1,7 +1,5 @@
 from redbot.core import commands
 from redbot.core import Config
-from redbot.core.utils.menus import DEFAULT_CONTROLS, menu
-from redbot.core.data_manager import bundled_data_path
 import math
 
 
