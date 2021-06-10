@@ -34,3 +34,42 @@ class Genshin(commands.Cog):
                 output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
             tier += 1
         await ctx.send(output)
+
+    @commands.command(name = 'bondexp')
+    async def bondexp(self, ctx, level: int, pixels: int):
+        if not 1 <= level < 10 or 0 <= pixels < 331:
+            await ctx.send('wrong input')
+            return
+        levels = {1: [1000, 0],
+                  2: [1550, 1000],
+                  3: [2050, 2550],
+                  4: [2600, 4600],
+                  5: [3175, 7200],
+                  6: [3750, 10375],
+                  7: [4350, 14125],
+                  8: [4975, 18475],
+                  9: [5650, 23450]
+                  }
+
+        levelbarpixels = 331
+
+        totalexp = math.floor(levels[level][1] + (pixels / levelbarpixels) * levels[level][0])
+        missingexp = levels[10][1] - totalexp
+
+        dailygains = {'teapot': 120,
+                      'grind': 300,
+                      'commissions': 580,
+                      'resin': 360,
+                      'refresh': 120
+                      }
+
+        normal = dailygains['teapot'] + dailygains['commissions'] + dailygains['resin']
+        output = 'refreshes\tno grind\twith grind\n'
+
+        for i in range(4):
+            gain = normal + dailygains['refresh'] * i
+            withgrind = gain + dailygains['grind']
+
+            output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
+
+        await ctx.send(output)
