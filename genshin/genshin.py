@@ -92,6 +92,6 @@ class Genshin(commands.Cog):
 
             output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)) + '\n'
 
-        output += '```'
+        output += f'\ntotal exp missing: {missingexp}```'
 
         await ctx.send(output)
