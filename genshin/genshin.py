@@ -74,6 +74,6 @@ class Genshin(commands.Cog):
             # output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
             output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)) + '\n'
 
-        output += '`'
+        output += '```'
 
         await ctx.send(output)
