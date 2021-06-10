@@ -28,9 +28,7 @@ class Genshin(commands.Cog):
         for level in levels:
             domains = math.ceil((level - current_bronze) / average_gain)
             condensed = math.ceil(((level - current_bronze) / average_gain) / 2)
-            if domains <= 0:
-                output += f"{tier}/{tier}/{tier}: -\n"
-            else:
+            if domains > 0:
                 output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
             tier += 1
         await ctx.send(output)
@@ -66,12 +64,14 @@ class Genshin(commands.Cog):
                       }
 
         normal = dailygains['teapot'] + dailygains['commissions'] + dailygains['resin']
-        output = 'refreshes\tno grind\twith grind\n'
+        # output = 'refreshes\tno grind\twith grind\n'
+        output = 'refreshes'.ljust(12) + 'no grind'.ljust(12) + 'with grind\n'
 
         for i in range(4):
             gain = normal + dailygains['refresh'] * i
             withgrind = gain + dailygains['grind']
 
-            output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
+            # output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
+            output += str(i).ljust(12) + math.ceil(missingexp/gain).ljust(12) + math.ceil(missingexp/withgrind).ljust(12)
 
         await ctx.send(output)
