@@ -51,10 +51,12 @@ class Genshin(commands.Cog):
                   9: [5650, 23450]
                   }
 
+        maxexp = 29100
+
         levelbarpixels = 331
 
         totalexp = math.floor(levels[level][1] + (pixels / levelbarpixels) * levels[level][0])
-        missingexp = levels[10][1] - totalexp
+        missingexp = maxexp - totalexp
 
         dailygains = {'teapot': 120,
                       'grind': 300,
