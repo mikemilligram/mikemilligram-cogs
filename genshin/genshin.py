@@ -72,6 +72,6 @@ class Genshin(commands.Cog):
             withgrind = gain + dailygains['grind']
 
             # output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
-            output += str(i).ljust(12) + math.ceil(missingexp/gain).ljust(12) + math.ceil(missingexp/withgrind).ljust(12)
+            output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)).ljust(12)
 
         await ctx.send(output)
