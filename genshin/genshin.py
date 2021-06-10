@@ -65,13 +65,15 @@ class Genshin(commands.Cog):
 
         normal = dailygains['teapot'] + dailygains['commissions'] + dailygains['resin']
         # output = 'refreshes\tno grind\twith grind\n'
-        output = 'refreshes'.ljust(12) + 'no grind'.ljust(12) + 'with grind\n'
+        output = '```refreshes'.ljust(12) + 'no grind'.ljust(12) + 'with grind\n'
 
         for i in range(4):
             gain = normal + dailygains['refresh'] * i
             withgrind = gain + dailygains['grind']
 
             # output += f'{i}\t{math.ceil(missingexp/gain)}\t{math.ceil(missingexp/withgrind)}\n'
-            output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)).ljust(12)
+            output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)) + '\n'
+
+        output += '`'
 
         await ctx.send(output)
