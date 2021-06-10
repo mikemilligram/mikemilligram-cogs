@@ -33,6 +33,25 @@ class Genshin(commands.Cog):
             tier += 1
         await ctx.send(output)
 
+    @commands.command(name = 'papers')
+    async def papers(self, ctx, purple: int, red: int, white = 0):
+
+        levels = [3331, 4943, 8367]
+        average_gain = 122.5
+        min_gain = 110
+        max_gain = 135
+        current_whites = purple * 20 + red * 5 + white
+
+        tier = 70
+        output = ""
+        for level in levels:
+            leylines = math.ceil((level - current_whites) / average_gain)
+            condensed = math.ceil(((level - current_whites) / average_gain) / 2)
+            if leylines > 0:
+                output += f"{tier}:\t{leylines} ({condensed})\n"
+            tier += 10
+        await ctx.send(output)
+
     @commands.command(name = 'bondexp')
     async def bondexp(self, ctx, level: int, pixels: int):
         if not 1 <= level < 10 or not 0 <= pixels < 331:
