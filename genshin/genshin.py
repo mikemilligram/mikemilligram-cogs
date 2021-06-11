@@ -90,7 +90,7 @@ class Genshin(commands.Cog):
             gain = normal + dailygains['refresh'] * i
             withgrind = gain + dailygains['grind']
 
-            output += str(i).ljust(12) + str(math.ceil(missingexp/gain)).ljust(12) + str(math.ceil(missingexp/withgrind)) + '\n'
+            output += str(i).ljust(12) + (str(math.ceil(missingexp/gain)) + f' ({gain})').ljust(12) + (str(math.ceil(missingexp/withgrind)) + f' ({withgrind})') + '\n'
 
         output += f'\ntotal exp missing: {missingexp}```'
 
