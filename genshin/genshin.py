@@ -1,6 +1,6 @@
 from redbot.core import commands
 from redbot.core import Config
-from datetime import date
+from datetime import datetime
 import math
 
 
