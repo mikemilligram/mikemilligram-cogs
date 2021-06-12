@@ -136,6 +136,6 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @grind.command(name = 'grind')
+    @grind.command(name = 'reset')
     async def grind_reset(self, ctx):
         await self.config.grind.set(0)
