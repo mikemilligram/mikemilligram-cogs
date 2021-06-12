@@ -107,4 +107,4 @@ class Genshin(commands.Cog):
 
         output = now.strftime("%d/%m/%Y")
 
-        await ctx.send(output)
+        await ctx.send(now)
