@@ -98,7 +98,7 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @commands.group(name = 'grind')
+    @commands.command(name = 'grind')
     async def grind(self, ctx, events: int = 1):
 
         if not 0 < events < 10:
@@ -136,6 +136,6 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @grind.command(name = 'reset')
+    @commands.command(name = 'reset')
     async def grind_reset(self, ctx):
         await self.config.grind.set(0)
