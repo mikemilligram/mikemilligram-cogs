@@ -9,7 +9,7 @@ class Genshin(commands.Cog):
         super().__init__(*args, **kwargs)
         self.config = Config.get_conf(self, identifier=3547)
         default_global = {
-            grind: 0
+            'grind': 0
         }
         default_member = {
 
