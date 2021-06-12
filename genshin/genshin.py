@@ -98,7 +98,7 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @commands.command(name = 'grind')
+    @commands.group(name = 'grind')
     async def grind(self, ctx, events: int = 1):
 
         if not 0 < events < 10:
@@ -107,13 +107,11 @@ class Genshin(commands.Cog):
 
         grind = await self.config.grind()
         last_date = await self.config.date()
-
         now = datetime.now()
         hour = int(now.strftime("%H"))
 
         if hour < 11:
             now -= timedelta(1)
-
         formatted_date = now.strftime("%d/%m/%Y")
 
         if formatted_date == last_date:
@@ -121,8 +119,6 @@ class Genshin(commands.Cog):
                 await ctx.send("today's bond exp grind has already been completed")
                 return
             grind += events
-            if grind >= 10:
-                grind = 10
         else:
             grind = events
 
@@ -131,7 +127,7 @@ class Genshin(commands.Cog):
         elif grind < 10:
             second_line = "IIIII " + "I" * (grind - 5)
         else:
-            second_line = "***IIIII IIIII***"
+            second_line = "**IIIII IIIII**"
 
         output = f'{formatted_date}\n{second_line}'
 
@@ -139,3 +135,7 @@ class Genshin(commands.Cog):
         await self.config.date.set(formatted_date)
 
         await ctx.send(output)
+
+    @grind.command(name = 'grind')
+    async def grind_reset(self, ctx):
+        await self.config.grind.set(0)
