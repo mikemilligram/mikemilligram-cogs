@@ -1,6 +1,6 @@
 from redbot.core import commands
 from redbot.core import Config
-from datetime import datetime
+from datetime import datetime, timedelta
 import math
 
 
@@ -9,7 +9,8 @@ class Genshin(commands.Cog):
         super().__init__(*args, **kwargs)
         self.config = Config.get_conf(self, identifier=3547)
         default_global = {
-            'grind': 0
+            'grind': 0,
+            'date': ""
         }
         default_member = {
 
@@ -98,13 +99,43 @@ class Genshin(commands.Cog):
         await ctx.send(output)
 
     @commands.command(name = 'grind')
-    async def grind(self, ctx):
+    async def grind(self, ctx, events: int = 1):
+
+        if not 0 < events < 10:
+            await ctx.send('wrong input')
+            return
+
         grind = await self.config.grind()
+        last_date = await self.config.date()
 
         now = datetime.now()
-
         hour = int(now.strftime("%H"))
 
-        output = now.strftime("%d/%m/%Y")
+        if hour < 11:
+            now -= timedelta(1)
 
-        await ctx.send(now)
+        formatted_date = now.strftime("%d/%m/%Y")
+
+        if formatted_date == last_date:
+            if grind >= 10:
+                await ctx.send("today's bond exp grind has already been completed")
+                return
+            grind += events
+            if grind >= 10:
+                grind = 10
+        else:
+            grind = events
+
+        if grind < 5:
+            second_line = "I" * grind
+        elif grind < 10:
+            second_line = "IIIII " + "I" * (grind - 5)
+        else:
+            second_line = "***IIIII IIIII***"
+
+        output = f'{formatted_date}\n{second_line}'
+
+        await self.config.grind.set(grind)
+        await self.config.date.set(formatted_date)
+
+        await ctx.send(output)
