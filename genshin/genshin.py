@@ -1,5 +1,6 @@
 from redbot.core import commands
 from redbot.core import Config
+from datetime import date
 import math
 
 
@@ -8,7 +9,7 @@ class Genshin(commands.Cog):
         super().__init__(*args, **kwargs)
         self.config = Config.get_conf(self, identifier=3547)
         default_global = {
-
+            grind: 0
         }
         default_member = {
 
@@ -93,5 +94,17 @@ class Genshin(commands.Cog):
             output += str(i).ljust(12) + (str(math.ceil(missingexp/gain)) + f' ({gain})').ljust(12) + (str(math.ceil(missingexp/withgrind)) + f' ({withgrind})') + '\n'
 
         output += f'\ntotal exp missing: {missingexp}```'
+
+        await ctx.send(output)
+
+    @commands.command(name = 'grind')
+    async def grind(self, ctx):
+        grind = await self.config.grind()
+
+        now = datetime.now()
+
+        hour = int(now.strftime("%H"))
+
+        output = now.strftime("%d/%m/%Y")
 
         await ctx.send(output)
