@@ -116,7 +116,7 @@ class Genshin(commands.Cog):
 
         if formatted_date == last_date:
             if grind >= 10:
-                await ctx.send("today's bond exp grind has already been completed")
+                await ctx.send("today's bond exp grind has already been completed.")
                 return
             grind += events
         else:
@@ -139,3 +139,5 @@ class Genshin(commands.Cog):
     @commands.command(name = 'reset')
     async def grind_reset(self, ctx):
         await self.config.grind.set(0)
+
+        await ctx.send("today's bond exp grind has been reset.")
