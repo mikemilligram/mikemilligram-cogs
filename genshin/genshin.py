@@ -9,6 +9,9 @@ class Genshin(commands.Cog):
         super().__init__(*args, **kwargs)
         self.config = Config.get_conf(self, identifier=3547)
         default_global = {
+
+        }
+        default_guild = {
             'grind': 0,
             'date': ""
         }
@@ -16,6 +19,7 @@ class Genshin(commands.Cog):
 
         }
         self.config.register_global(**default_global)
+        self.config.register_guild(**default_guild)
         self.config.register_member(**default_member)
 
     @commands.command(name='talents')
@@ -105,8 +109,8 @@ class Genshin(commands.Cog):
             await ctx.send('wrong input')
             return
 
-        grind = await self.config.grind()
-        last_date = await self.config.date()
+        grind = await self.config.guild(ctx.guild).grind()
+        last_date = await self.config.guild(ctx.guild).date()
         now = datetime.now()
         hour = int(now.strftime("%H"))
 
@@ -131,13 +135,13 @@ class Genshin(commands.Cog):
 
         output = f'{formatted_date}\n{second_line}'
 
-        await self.config.grind.set(grind)
-        await self.config.date.set(formatted_date)
+        await self.config.guild(ctx.guild).grind.set(grind)
+        await self.config.guild(ctx.guild).date.set(formatted_date)
 
         await ctx.send(output)
 
     @commands.command(name = 'reset')
     async def grind_reset(self, ctx):
-        await self.config.grind.set(0)
+        await self.config.guild(ctx.guild).grind.set(0)
 
         await ctx.send("today's bond exp grind has been reset.")
