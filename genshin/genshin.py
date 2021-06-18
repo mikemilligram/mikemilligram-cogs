@@ -37,15 +37,20 @@ class Genshin(commands.Cog):
             if domains > 0:
                 output += f"{tier}/{tier}/{tier}:\t{domains} ({condensed})\n"
             tier += 1
-        await ctx.send(output)
+        if output == "":
+            spare = current_bronze - levels[4]
+            gold = math.floor(spare / 9)
+            silver = math.floor((spare % 9) / 3)
+            bronze = (spare % 9) % 3
+            await ctx.send(f"you'll have {gold} gold, {silver} silver, and {bronze} bronze talent books left over.")
+        else:
+            await ctx.send(output)
 
     @commands.command(name = 'papers')
     async def papers(self, ctx, purple: int, red: int, white = 0):
 
         levels = [3331, 4943, 8367]
         average_gain = 122.5
-        min_gain = 110
-        max_gain = 135
         current_whites = purple * 20 + red * 5 + white
 
         tier = 70
@@ -56,7 +61,14 @@ class Genshin(commands.Cog):
             if leylines > 0:
                 output += f"{tier}:\t{leylines} ({condensed})\n"
             tier += 10
-        await ctx.send(output)
+        if output == "":
+            spare = current_whites - levels[2]
+            purple = math.floor(spare / 20)
+            red = math.floor((spare % 20) / 5)
+            white = (spare % 20) % 5
+            await ctx.send(f"you'll have {purple} purple, {red} red, and {white} white level up papers left over.")
+        else:
+            await ctx.send(output)
 
     @commands.command(name = 'bondexp')
     async def bondexp(self, ctx, level: int, pixels: int):
