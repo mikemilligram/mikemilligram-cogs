@@ -100,7 +100,7 @@ class Genshin(commands.Cog):
 
         output = '```' + 'refreshes'.ljust(12) + 'no grind'.ljust(12) + 'with grind\n'
 
-        for i in range(4):
+        for i in range(7):
             gain = normal + dailygains['refresh'] * i
             withgrind = gain + dailygains['grind']
 
