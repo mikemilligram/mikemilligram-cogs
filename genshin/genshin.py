@@ -66,21 +66,64 @@ class Genshin(commands.Cog):
         else:
             await ctx.send(output)
 
+    @commands.command(name = 'ar')
+    async def ar(self, ctx, ar: int, exp: int = 0):
+        ranks = {
+            55: 232350,
+            56: 258950,
+            57: 285750,
+            58: 312825,
+            59: 340125
+        }
+        if not 55 <= ar <= 59 or not 0 <= exp < ranks[ar]:
+            await ctx.send('wrong input')
+            return
+        gains = {
+            'commissions': 1000,
+            'commission reward': 500,
+            'resin': 900,
+            'refresh': 300,
+        }
+
+        output_spacing = 14
+        normal = gains['commissions'] + gains['commission reward'] + gains['resin']
+        output = '```' + 'refreshes'.ljust(output_spacing)
+
+        for i in range(ar + 1, 61):
+            output += f'{i}'.ljust(output_spacing)
+        output += '\n'
+
+        for i in range(7):
+            gain = normal + gains['refresh'] * i
+            missingexp = 0
+            output += str(i).ljust(output_spacing)
+            for j in range(ar, 60):
+                for k in range(ar, j + 1):
+                    missingexp += ranks[k]
+                missingexp -= exp
+
+                output += (str(math.ceil(missingexp / gain)) + f' ({gain})').ljust(output_spacing)
+            output += '\n'
+        output += '```'
+
+        await ctx.send(output)
+
     @commands.command(name = 'bondexp')
     async def bondexp(self, ctx, level: int, pixels: int):
         if not 1 <= level < 10 or not 0 <= pixels < 331:
             await ctx.send('wrong input')
             return
-        levels = {1: [1000, 0],
-                  2: [1550, 1000],
-                  3: [2050, 2550],
-                  4: [2600, 4600],
-                  5: [3175, 7200],
-                  6: [3750, 10375],
-                  7: [4350, 14125],
-                  8: [4975, 18475],
-                  9: [5650, 23450]
-                  }
+        levels = {
+            1: [1000, 0],
+            2: [1550, 1000],
+            3: [2050, 2550],
+            4: [2600, 4600],
+            5: [3175, 7200],
+            6: [3750, 10375],
+            7: [4350, 14125],
+            8: [4975, 18475],
+            9: [5650, 23450]
+        }
 
         maxexp = 29100
 
