@@ -90,19 +90,19 @@ class Genshin(commands.Cog):
         output = '```' + 'refreshes'.ljust(output_spacing)
 
         for i in range(ar + 1, 61):
-            output += ('AR ' +  f'{i}').ljust(output_spacing)
+            output += ('AR ' + f'{i}').ljust(output_spacing)
         output += '\n'
 
         for i in range(7):
             gain = normal + gains['refresh'] * i
             missingexp = 0
-            output += str(i).ljust(output_spacing)
+            output += (str(i) + f'({gain})').ljust(output_spacing)
             for j in range(ar, 60):
                 for k in range(ar, j + 1):
                     missingexp += ranks[k]
                 missingexp -= exp
 
-                output += (str(math.ceil(missingexp / gain)) + f' ({gain})').ljust(output_spacing)
+                output += str(math.ceil(missingexp / gain)).ljust(output_spacing)
             output += '\n'
         output += '```'
 
