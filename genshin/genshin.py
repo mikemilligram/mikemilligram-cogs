@@ -90,13 +90,13 @@ class Genshin(commands.Cog):
         output = '```' + 'refreshes'.ljust(output_spacing)
 
         for i in range(ar + 1, 61):
-            output += f'{i}'.ljust(output_spacing)
+            output += ('AR ' +  f'{i}').ljust(output_spacing)
         output += '\n'
 
         for i in range(7):
             gain = normal + gains['refresh'] * i
             missingexp = 0
-            output += 'AR ' + str(i).ljust(output_spacing)
+            output += str(i).ljust(output_spacing)
             for j in range(ar, 60):
                 for k in range(ar, j + 1):
                     missingexp += ranks[k]
