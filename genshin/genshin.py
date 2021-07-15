@@ -96,7 +96,7 @@ class Genshin(commands.Cog):
         for i in range(7):
             gain = normal + gains['refresh'] * i
             missingexp = 0
-            output += (str(i) + f'({gain})').ljust(output_spacing)
+            output += (str(i) + f' ({gain})').ljust(output_spacing)
             for j in range(ar, 60):
                 for k in range(ar, j + 1):
                     missingexp += ranks[k]
