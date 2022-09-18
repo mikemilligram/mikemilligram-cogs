@@ -1,6 +1,8 @@
 from redbot.core import commands
 from redbot.core import Config
 from datetime import datetime, timedelta
+import genshinstats as gs
+import discord
 import math
 
 
@@ -16,7 +18,9 @@ class Genshin(commands.Cog):
             'date': ""
         }
         default_member = {
-
+            'ltuid': 0,
+            'ltoken': '',
+            'uid': 0
         }
         self.config.register_global(**default_global)
         self.config.register_guild(**default_guild)
@@ -44,8 +48,8 @@ class Genshin(commands.Cog):
         else:
             await ctx.send(output)
 
-    @commands.command(name = 'papers')
-    async def papers(self, ctx, purple: int, red: int, white = 0):
+    @commands.command(name='papers')
+    async def papers(self, ctx, purple: int, red: int, white=0):
 
         levels = [3331, 4943, 8367]
         average_gain = 122.5
@@ -66,7 +70,7 @@ class Genshin(commands.Cog):
         else:
             await ctx.send(output)
 
-    @commands.command(name = 'ar')
+    @commands.command(name='ar')
     async def ar(self, ctx, ar: int, exp: int = 0):
         ranks = {
             55: 232350,
@@ -108,7 +112,7 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @commands.command(name = 'bondexp')
+    @commands.command(name='bondexp')
     async def bondexp(self, ctx, level: int, pixels: int):
         if not 1 <= level < 10 or not 0 <= pixels < 331:
             await ctx.send('wrong input')
@@ -147,13 +151,14 @@ class Genshin(commands.Cog):
             gain = normal + dailygains['refresh'] * i
             withgrind = gain + dailygains['grind']
 
-            output += str(i).ljust(12) + (str(math.ceil(missingexp/gain)) + f' ({gain})').ljust(12) + (str(math.ceil(missingexp/withgrind)) + f' ({withgrind})') + '\n'
+            output += str(i).ljust(12) + (str(math.ceil(missingexp / gain)) + f' ({gain})').ljust(12) + (
+                    str(math.ceil(missingexp / withgrind)) + f' ({withgrind})') + '\n'
 
         output += f'\ntotal exp missing: {missingexp}```'
 
         await ctx.send(output)
 
-    @commands.command(name = 'grind')
+    @commands.command(name='grind')
     async def grind(self, ctx, events: int = 1):
 
         if not 0 < events < 10:
@@ -191,8 +196,47 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
-    @commands.command(name = 'reset')
+    @commands.command(name='reset')
     async def grind_reset(self, ctx):
         await self.config.guild(ctx.guild).grind.set(0)
 
         await ctx.send("today's bond exp grind has been reset.")
+
+    @commands.group(name='genshin')
+    async def genshin(self):
+        pass
+
+    @genshin.command(name='register')
+    async def register(self, ctx, ltuid: int, ltoken: str, uid: int):
+        await self.config.member(ctx.author).set_raw('ltuid', value=ltuid)
+        await self.config.member(ctx.author).set_raw('ltoken', value=ltoken)
+        await self.config.member(ctx.author).set_raw('uid', value=uid)
+
+        gs.set_cookie(ltuid=ltuid, ltoken=ltoken)
+
+    @genshin.command(name='resin')
+    async def resin(self, ctx, member: discord.Member = None):
+        if member is not None:
+            uid = await self.config.member(member).uid()
+        else:
+            uid = await self.config.member(ctx.author).uid()
+
+        notes = gs.get_notes(uid)
+        resin = notes['resin']
+        seconds = notes['until_resin_limit']
+
+        output = f'You have {resin} resin, it overflows in {seconds_to_string(seconds)}'
+
+        await ctx.send(output)
+
+
+def seconds_to_string(seconds):
+    hours = int(seconds / 60 / 60)
+    minutes = int(seconds / 60 % 60)
+    seconds = int(seconds % 60 % 60)
+
+    if hours == 0:
+        if minutes == 0:
+            return f'{seconds}s'
+        return f'{minutes}m{seconds}s'
+    return f'{hours}h{minutes}m{seconds}s'
