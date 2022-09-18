@@ -223,7 +223,7 @@ class Genshin(commands.Cog):
 
         notes = gs.get_notes(uid)
         resin = notes['resin']
-        seconds = notes['until_resin_limit']
+        seconds = int(notes['until_resin_limit'])
 
         output = f'You have {resin} resin, it overflows in {seconds_to_string(seconds)}'
 
