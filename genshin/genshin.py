@@ -203,18 +203,19 @@ class Genshin(commands.Cog):
         await ctx.send("today's bond exp grind has been reset.")
 
     @commands.group(name='genshin')
-    async def genshin(self, ctx, member: discord.Member = None):
-        if member is None:
-            member = ctx.author
+    async def genshin(self, ctx):
         pass
 
     @genshin.command(name='register')
-    async def register(self, ctx, ltuid: int, ltoken: str, uid: int):
+    async def register(self, ctx, ltuid: int, ltoken: str, uid: int, member: discord.Member = None):
         await ctx.message.delete()
 
-        await self.config.member(ctx.author).set_raw('ltuid', value=ltuid)
-        await self.config.member(ctx.author).set_raw('ltoken', value=ltoken)
-        await self.config.member(ctx.author).set_raw('uid', value=uid)
+        if member is None:
+            member = ctx.author
+
+        await self.config.member(member).set_raw('ltuid', value=ltuid)
+        await self.config.member(member).set_raw('ltoken', value=ltoken)
+        await self.config.member(member).set_raw('uid', value=uid)
 
         gs.set_cookies({'ltuid': ltuid, 'ltoken': ltoken}, clear=False)
 
@@ -222,6 +223,8 @@ class Genshin(commands.Cog):
 
     @genshin.command(name='resin')
     async def resin(self, ctx, member: discord.Member = None):
+        if member is None:
+            member = ctx.author
         uid = await self.config.member(member).uid()
 
         notes = gs.get_notes(uid)
@@ -232,10 +235,6 @@ class Genshin(commands.Cog):
                  f'Overflows at: {overflows_at(seconds)}'
 
         await ctx.send(output)
-
-    @genshin.command(name='test')
-    async def test(self, ctx, member: discord.Member = None):
-        await ctx.send(member.name)
 
 
 def overflows_at(seconds):
