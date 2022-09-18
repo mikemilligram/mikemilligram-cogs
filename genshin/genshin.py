@@ -203,8 +203,9 @@ class Genshin(commands.Cog):
         await ctx.send("today's bond exp grind has been reset.")
 
     @commands.group(name='genshin')
-    async def genshin(self, ctx):
-        await ctx.send('test')
+    async def genshin(self, ctx, member: discord.Member = None):
+        if member is None:
+            member = ctx.author
         pass
 
     @genshin.command(name='register')
@@ -221,9 +222,6 @@ class Genshin(commands.Cog):
 
     @genshin.command(name='resin')
     async def resin(self, ctx, member: discord.Member = None):
-        if member is None:
-            member = ctx.author
-
         uid = await self.config.member(member).uid()
 
         notes = gs.get_notes(uid)
@@ -234,6 +232,10 @@ class Genshin(commands.Cog):
                  f'Overflows at: {overflows_at(seconds)}'
 
         await ctx.send(output)
+
+    @genshin.command(name='test')
+    async def test(self, ctx, member: discord.Member = None):
+        await ctx.send(member.name)
 
 
 def overflows_at(seconds):
