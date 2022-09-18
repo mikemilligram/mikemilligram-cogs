@@ -229,6 +229,10 @@ class Genshin(commands.Cog):
 
         await ctx.send(output)
 
+    @genshin.command(name='test')
+    async def test(self, ctx):
+        await ctx.send(datetime.now)
+
 
 def seconds_to_string(seconds):
     hours = int(seconds / 60 / 60)
