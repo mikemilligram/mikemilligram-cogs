@@ -228,8 +228,8 @@ class Genshin(commands.Cog):
         if member is None:
             member = ctx.author
 
-        uid = await self.config.member(member).uid
-        cookie = await self.config.member(member).cookie
+        uid = await self.config.member(member).uid()
+        cookie = await self.config.member(member).cookie()
 
         notes = gs.get_notes(uid, cookie=cookie)
         resin = notes['resin']
