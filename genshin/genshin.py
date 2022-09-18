@@ -225,22 +225,20 @@ class Genshin(commands.Cog):
         resin = notes['resin']
         seconds = int(notes['until_resin_limit'])
 
-        output = f'You have {resin} resin, it overflows in {seconds_to_string(seconds)}'
+        output = f'You have {resin} resin, it overflows {overflows_at(seconds)}'
 
         await ctx.send(output)
 
-    @genshin.command(name='test')
-    async def test(self, ctx):
-        await ctx.send(datetime.now())
 
+def overflows_at(seconds):
+    now = datetime.now()
+    overflows = now + timedelta(seconds=seconds)
 
-def seconds_to_string(seconds):
-    hours = int(seconds / 60 / 60)
-    minutes = int(seconds / 60 % 60)
-    seconds = int(seconds % 60 % 60)
+    if now.date() == overflows.date():
+        message = 'today at '
+    else:
+        message = 'tomorrow at '
 
-    if hours == 0:
-        if minutes == 0:
-            return f'{seconds}s'
-        return f'{minutes}m{seconds}s'
-    return f'{hours}h{minutes}m{seconds}s'
+    message += overflows.strftime('%H:%M').lstrip('0')
+
+    return message
