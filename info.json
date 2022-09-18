@@ -1,7 +1,7 @@
 {
     "author" : ["mikemilligram"],
-    "install_msg" : "thanks for adding the repo, if you notice any bugs, please let me know mikemilligram#1312",
-    "name" : "fishycogs",
+    "install_msg" : "thanks for adding the repo, if you notice any bugs, please let me know mikemilligram#1606",
+    "name" : "mikemilligram-cogs",
     "short" : "cogs made by mikemilligram",
     "description" : "some very simple cogs to make life a little easier",
     "tags" : ["fun", "tools"]
