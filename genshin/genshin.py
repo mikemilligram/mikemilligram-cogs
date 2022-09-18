@@ -239,6 +239,6 @@ def overflows_at(seconds):
     else:
         message = 'tomorrow at '
 
-    message += overflows.strftime('%H:%M').lstrip('0')
+    message += overflows.strftime('%H:%M')
 
     return message
