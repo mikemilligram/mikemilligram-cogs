@@ -231,7 +231,7 @@ class Genshin(commands.Cog):
 
     @genshin.command(name='test')
     async def test(self, ctx):
-        await ctx.send(datetime.now)
+        await ctx.send(datetime.now())
 
 
 def seconds_to_string(seconds):
