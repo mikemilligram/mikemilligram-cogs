@@ -18,9 +18,11 @@ class Genshin(commands.Cog):
             'date': ""
         }
         default_member = {
-            'ltuid': 0,
-            'ltoken': '',
-            'uid': 0
+            'uid': 0,
+            'cookie': {
+                'ltuid': 0,
+                'ltoken': ''
+            }
         }
         self.config.register_global(**default_global)
         self.config.register_guild(**default_guild)
@@ -213,8 +215,8 @@ class Genshin(commands.Cog):
         if member is None:
             member = ctx.author
 
-        await self.config.member(member).set_raw('ltuid', value=ltuid)
-        await self.config.member(member).set_raw('ltoken', value=ltoken)
+        await self.config.member(member).cookie.set_raw('ltuid', value=ltuid)
+        await self.config.member(member).cookie.set_raw('ltoken', value=ltoken)
         await self.config.member(member).set_raw('uid', value=uid)
 
         gs.set_cookies({'ltuid': ltuid, 'ltoken': ltoken}, clear=False)
@@ -225,9 +227,10 @@ class Genshin(commands.Cog):
     async def resin(self, ctx, member: discord.Member = None):
         if member is None:
             member = ctx.author
-        uid = await self.config.member(member).uid()
 
-        notes = gs.get_notes(uid)
+        data = await self.config.member(member)
+
+        notes = gs.get_notes(data['uid'], cookie=data['cookie'])
         resin = notes['resin']
         seconds = int(notes['until_resin_limit'])
 
