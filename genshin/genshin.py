@@ -204,41 +204,38 @@ class Genshin(commands.Cog):
 
     @commands.group(name='genshin')
     async def genshin(self, ctx):
+        await ctx.send('test')
         pass
 
     @genshin.command(name='register')
     async def register(self, ctx, ltuid: int, ltoken: str, uid: int):
+        await ctx.message.delete()
+
         await self.config.member(ctx.author).set_raw('ltuid', value=ltuid)
         await self.config.member(ctx.author).set_raw('ltoken', value=ltoken)
         await self.config.member(ctx.author).set_raw('uid', value=uid)
 
-        gs.set_cookie(ltuid=ltuid, ltoken=ltoken)
+        gs.set_cookies({'ltuid': ltuid, 'ltoken': ltoken}, clear=False)
+
+        await ctx.send('Your data has been registered!')
 
     @genshin.command(name='resin')
     async def resin(self, ctx, member: discord.Member = None):
-        if member is not None:
-            uid = await self.config.member(member).uid()
-        else:
-            uid = await self.config.member(ctx.author).uid()
+        if member is None:
+            member = ctx.author
+
+        uid = await self.config.member(member).uid()
 
         notes = gs.get_notes(uid)
         resin = notes['resin']
         seconds = int(notes['until_resin_limit'])
 
-        output = f'You have {resin} resin, it overflows {overflows_at(seconds)}'
+        output = f'Current Resin: {resin}\n' \
+                 f'Overflows at: {overflows_at(seconds)}'
 
         await ctx.send(output)
 
 
 def overflows_at(seconds):
-    now = datetime.now()
-    overflows = now + timedelta(seconds=seconds)
-
-    if now.date() == overflows.date():
-        message = 'today at '
-    else:
-        message = 'tomorrow at '
-
-    message += overflows.strftime('%H:%M')
-
-    return message
+    overflow_time = datetime.now() + timedelta(seconds=seconds)
+    return overflow_time.strftime('%H:%M')
