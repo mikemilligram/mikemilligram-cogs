@@ -89,8 +89,6 @@ class Genshin(commands.Cog):
 
         maxexp = 29100
 
-        levelbarpixels = 331
-
         totalexp = math.floor(levels[level][1] + (pixels / levelbarpixels) * levels[level][0])
         missingexp = maxexp - totalexp
 
