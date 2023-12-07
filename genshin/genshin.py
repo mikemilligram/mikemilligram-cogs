@@ -1,4 +1,5 @@
-from redbot.core import commands
+import discord
+from redbot.core import commands, app_commands
 from redbot.core import Config
 from datetime import datetime, timedelta
 import math
@@ -67,13 +68,13 @@ class Genshin(commands.Cog):
         else:
             await ctx.send(output)
 
-    @commands.command(name='bondexp')
-    async def bondexp(self, ctx, level: int, pixels: int, res: str = "1080"):
+    @app_commands.command(name='bondexp')
+    async def bondexp(self, interaction: discord.Interaction, level: int, pixels: int, res: str = "1080"):
         levelbarpixels = 331
         if res == "2k":
             levelbarpixels = 442
         if not 1 <= level < 10 or not 0 <= pixels < levelbarpixels:
-            await ctx.send('wrong input')
+            await interaction.response.send_message('wrong input')
             return
         levels = {
             1: [1000, 0],
@@ -112,7 +113,7 @@ class Genshin(commands.Cog):
 
         output += f'\ntotal exp missing: {missingexp}```'
 
-        await ctx.send(output)
+        await interaction.response.send_message(output, ephemeral=True)
 
     @commands.command(name='grind')
     async def grind(self, ctx, events: int = 1):
