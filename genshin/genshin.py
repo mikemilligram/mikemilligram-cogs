@@ -1,14 +1,12 @@
 from redbot.core import commands
 from redbot.core import Config
 from datetime import datetime, timedelta
-import genshinstats as gs
-import discord
 import math
 
 
 class Genshin(commands.Cog):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, bot):
+        self.bot = bot
         self.config = Config.get_conf(self, identifier=3547)
         default_global = {
 
@@ -19,10 +17,7 @@ class Genshin(commands.Cog):
         }
         default_member = {
             'uid': 0,
-            'cookie': {
-                'ltuid': 0,
-                'ltoken': ''
-            }
+            'achievements': {}
         }
         self.config.register_global(**default_global)
         self.config.register_guild(**default_guild)
@@ -71,48 +66,6 @@ class Genshin(commands.Cog):
             await ctx.send(f"you'll have about {purple} purples left over.")
         else:
             await ctx.send(output)
-
-    @commands.command(name='ar')
-    async def ar(self, ctx, ar: int, exp: int = 0):
-        ranks = {
-            55: 232350,
-            56: 258950,
-            57: 285750,
-            58: 312825,
-            59: 340125
-        }
-        if not 55 <= ar <= 59 or not 0 <= exp < ranks[ar]:
-            await ctx.send('wrong input')
-            return
-        gains = {
-            'commissions': 1000,
-            'commission reward': 500,
-            'resin': 900,
-            'refresh': 300,
-        }
-
-        output_spacing = 14
-        normal = gains['commissions'] + gains['commission reward'] + gains['resin']
-        output = '```' + 'refreshes'.ljust(output_spacing)
-
-        for i in range(ar + 1, 61):
-            output += ('AR ' + f'{i}').ljust(output_spacing)
-        output += '\n'
-
-        for i in range(7):
-            gain = normal + gains['refresh'] * i
-            missingexp = 0
-            output += (str(i) + f' ({gain})').ljust(output_spacing)
-            for j in range(ar, 60):
-                for k in range(ar, j + 1):
-                    missingexp += ranks[k]
-                missingexp -= exp
-
-                output += str(math.ceil(missingexp / gain)).ljust(output_spacing)
-            output += '\n'
-        output += '```'
-
-        await ctx.send(output)
 
     @commands.command(name='bondexp')
     async def bondexp(self, ctx, level: int, pixels: int):
@@ -207,40 +160,3 @@ class Genshin(commands.Cog):
     @commands.group(name='genshin')
     async def genshin(self, ctx):
         pass
-
-    @genshin.command(name='register')
-    async def register(self, ctx, ltuid: int, ltoken: str, uid: int, member: discord.Member = None):
-        await ctx.message.delete()
-
-        if member is None:
-            member = ctx.author
-
-        await self.config.member(member).cookie.set_raw('ltuid', value=ltuid)
-        await self.config.member(member).cookie.set_raw('ltoken', value=ltoken)
-        await self.config.member(member).set_raw('uid', value=uid)
-
-        gs.set_cookies({'ltuid': ltuid, 'ltoken': ltoken}, clear=False)
-
-        await ctx.send('Your data has been registered!')
-
-    @genshin.command(name='resin')
-    async def resin(self, ctx, member: discord.Member = None):
-        if member is None:
-            member = ctx.author
-
-        uid = await self.config.member(member).uid()
-        cookie = await self.config.member(member).cookie()
-
-        notes = gs.get_notes(uid, cookie=cookie)
-        resin = notes['resin']
-        seconds = int(notes['until_resin_limit'])
-
-        output = f'Current Resin: {resin}\n' \
-                 f'Overflows at: {overflows_at(seconds)}'
-
-        await ctx.send(output)
-
-
-def overflows_at(seconds):
-    overflow_time = datetime.now() + timedelta(seconds=seconds)
-    return overflow_time.strftime('%H:%M')

@@ -1,5 +1,5 @@
 from .genshin import Genshin
 
 
-def setup(bot):
-    bot.add_cog(Genshin())
+async def setup(bot):
+    await bot.add_cog(Genshin(bot))
