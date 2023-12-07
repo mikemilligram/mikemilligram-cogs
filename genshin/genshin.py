@@ -68,8 +68,11 @@ class Genshin(commands.Cog):
             await ctx.send(output)
 
     @commands.command(name='bondexp')
-    async def bondexp(self, ctx, level: int, pixels: int):
-        if not 1 <= level < 10 or not 0 <= pixels < 331:
+    async def bondexp(self, ctx, level: int, pixels: int, res: str = "1080"):
+        levelbarpixels = 331
+        if res == "2k":
+            levelbarpixels = 442
+        if not 1 <= level < 10 or not 0 <= pixels < levelbarpixels:
             await ctx.send('wrong input')
             return
         levels = {
