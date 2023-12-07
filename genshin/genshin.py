@@ -69,12 +69,14 @@ class Genshin(commands.Cog):
             await ctx.send(output)
 
     @app_commands.command(name='bondexp')
-    async def bondexp(self, interaction: discord.Interaction, level: int, pixels: int, res: str = "1080"):
-        levelbarpixels = 331
-        if res == "2k":
-            levelbarpixels = 442
-        if not 1 <= level < 10 or not 0 <= pixels < levelbarpixels:
-            await interaction.response.send_message('wrong input')
+    @app_commands.choices(res=[
+        app_commands.Choice(name="1920x1080 - Full HD", value=1920),
+        app_commands.Choice(name="2560x1440 - 2K", value=2560)
+    ])
+    async def bondexp(self, interaction: discord.Interaction, level: int, pixels: int, res: int):
+        level_bar_pixels = 331 * (res / 1920)
+        if not 1 <= level < 10 or not 0 <= pixels < level_bar_pixels:
+            await interaction.response.send_message('invalid input', ephemeral=True)
             return
         levels = {
             1: [1000, 0],
@@ -90,7 +92,7 @@ class Genshin(commands.Cog):
 
         maxexp = 29100
 
-        totalexp = math.floor(levels[level][1] + (pixels / levelbarpixels) * levels[level][0])
+        totalexp = math.floor(levels[level][1] + (pixels / level_bar_pixels) * levels[level][0])
         missingexp = maxexp - totalexp
 
         dailygains = {'teapot': 120,
@@ -113,7 +115,7 @@ class Genshin(commands.Cog):
 
         output += f'\ntotal exp missing: {missingexp}```'
 
-        await interaction.response.send_message(output, ephemeral=True)
+        await interaction.response.send_message(output)
 
     @commands.command(name='grind')
     async def grind(self, ctx, events: int = 1):
