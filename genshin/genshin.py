@@ -205,7 +205,7 @@ class Genshin(commands.Cog):
         await interaction.response.send_message(f"Achievements have been updated, Total Achievements (Wonders of the "
                                                 f"World): {len(wonders.keys())}")
 
-    @achievements.commands()
+    @achievements.command()
     async def list(self, interaction: discord.Interaction):
         achievements = await self.config.guild(interaction.guild).achievements()
         await interaction.response.send_message(len(achievements.keys()))
