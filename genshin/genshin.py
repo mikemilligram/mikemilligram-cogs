@@ -166,15 +166,7 @@ class Genshin(commands.Cog):
 
         await ctx.send("today's bond exp grind has been reset.")
 
-    @commands.group(name='genshin')
-    async def genshin(self, interaction: discord.Interaction):
-        pass
-
-    @genshin.group(name='achievements')
-    async def achievements(self, interaction: discord.Interaction):
-        pass
-
-    @achievements.command()
+    @app_commands.command(name='achievements update')
     async def update(self, interaction: discord.Interaction):
         base_url = "https://genshin-impact.fandom.com"
         url = f"{base_url}/wiki/Wonders_of_the_World"
@@ -205,11 +197,10 @@ class Genshin(commands.Cog):
         await interaction.response.send_message(f"Achievements have been updated, Total Achievements (Wonders of the "
                                                 f"World): {len(wonders.keys())}")
 
-    @achievements.command()
+    @app_commands.command(name='achievements list')
     async def list(self, interaction: discord.Interaction):
         achievements = await self.config.guild(interaction.guild).achievements()
         await interaction.response.send_message(len(achievements.keys()))
 
     # async def test(self, interaction: discord.Interaction[discord.InteractionType.component]):
     #     await interaction.response.send_message(discord.ActionRow([discord.Button(discord.ComponentType.button)]))
-
