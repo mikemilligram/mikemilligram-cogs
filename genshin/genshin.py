@@ -3,6 +3,10 @@ from redbot.core import commands, app_commands
 from redbot.core import Config
 from datetime import datetime, timedelta
 import math
+import json
+import re
+import requests
+from bs4 import BeautifulSoup
 
 
 class Genshin(commands.Cog):
@@ -13,6 +17,7 @@ class Genshin(commands.Cog):
 
         }
         default_guild = {
+            'achievements': {},
             'grind': 0,
             'date': ""
         }
@@ -161,6 +166,49 @@ class Genshin(commands.Cog):
 
         await ctx.send("today's bond exp grind has been reset.")
 
-    @commands.group(name='genshin')
-    async def genshin(self, ctx):
+    @commands.group()
+    async def genshin(self):
         pass
+
+    @genshin.group()
+    async def achievements(self):
+        pass
+
+    @achievements.command()
+    async def update(self, interaction: discord.Interaction):
+        base_url = "https://genshin-impact.fandom.com"
+        url = f"{base_url}/wiki/Wonders_of_the_World"
+        soup = BeautifulSoup(requests.get(url).text, 'html.parser')
+
+        wonders = {}
+        rows = soup.find('table').findAll('tr')
+
+        for row in rows[1:]:
+            elements = row.findAll('td')
+            tier = re.match(r'.*\(Tier_(\d)\).*', elements[0].find('a').get('href').strip())
+            name = elements[0].text.strip() + f" ({tier[1]})" if tier else elements[0].text.strip()
+            achievement = {
+                'name': elements[0].text.strip(),
+                'description': elements[1].text.strip(),
+                'requirements': elements[2].text.strip(),
+                'hidden': elements[3].text.strip(),
+                'type': elements[4].text.strip(),
+                'version': elements[5].text.strip(),
+                'reward': elements[6].text.strip(),
+                'link': base_url + elements[0].find('a').get('href').strip(),
+                'tier': tier[1] if tier else 0
+            }
+            wonders[name] = achievement
+
+        await self.config.guild(interaction.guild).achievements.set(wonders)
+
+        await interaction.response.send_message(f"Achievements have been updated, Total Achievements (Wonders of the "
+                                                f"World): {len(wonders.keys())}")
+
+    async def list(self, interaction: discord.Interaction[discord.InteractionType.component]):
+        achievements = await self.config.guild(interaction.guild).achievements()
+        await interaction.response.send_message(len(achievements.keys()))
+
+    async def test(self, interaction: discord.Interaction[discord.InteractionType.component]):
+        await interaction.response.send_message(discord.ActionRow())
+
