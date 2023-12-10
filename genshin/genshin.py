@@ -205,6 +205,7 @@ class Genshin(commands.Cog):
         achievements = await self.config.guild(interaction.guild).achievements()
         await interaction.response.send_message(len(achievements.keys()))
 
+    @commands.command()
     async def test(self, interaction: discord.Interaction):
 
         view = discord.ui.View()
