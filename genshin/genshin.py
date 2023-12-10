@@ -205,10 +205,10 @@ class Genshin(commands.Cog):
         await interaction.response.send_message(f"Achievements have been updated, Total Achievements (Wonders of the "
                                                 f"World): {len(wonders.keys())}")
 
-    async def list(self, interaction: discord.Interaction[discord.InteractionType.component]):
+    async def list(self, interaction: discord.Interaction):
         achievements = await self.config.guild(interaction.guild).achievements()
         await interaction.response.send_message(len(achievements.keys()))
 
-    async def test(self, interaction: discord.Interaction[discord.InteractionType.component]):
-        await interaction.response.send_message(discord.ActionRow())
+    # async def test(self, interaction: discord.Interaction[discord.InteractionType.component]):
+    #     await interaction.response.send_message(discord.ActionRow([discord.Button(discord.ComponentType.button)]))
 
