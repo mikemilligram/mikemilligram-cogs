@@ -167,11 +167,11 @@ class Genshin(commands.Cog):
         await ctx.send("today's bond exp grind has been reset.")
 
     @commands.group(name='genshin')
-    async def genshin(self, ctx):
+    async def genshin(self, interaction: discord.Interaction):
         pass
 
     @genshin.group(name='achievements')
-    async def achievements(self, ctx):
+    async def achievements(self, interaction: discord.Interaction):
         pass
 
     @achievements.command()
