@@ -206,9 +206,9 @@ class Genshin(commands.Cog):
         await interaction.response.send_message(len(achievements.keys()))
 
     @commands.command()
-    async def test(self, interaction: discord.Interaction):
+    async def test(self, ctx):
 
         view = discord.ui.View()
         view.add_item(discord.ui.Button(style=discord.ButtonStyle.blurple, label="Test"))
 
-        await interaction.response.send_message(view)
+        await ctx.send(view)
