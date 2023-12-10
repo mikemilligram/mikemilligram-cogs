@@ -205,5 +205,9 @@ class Genshin(commands.Cog):
         achievements = await self.config.guild(interaction.guild).achievements()
         await interaction.response.send_message(len(achievements.keys()))
 
-    # async def test(self, interaction: discord.Interaction[discord.InteractionType.component]):
-    #     await interaction.response.send_message(discord.ActionRow([discord.Button(discord.ComponentType.button)]))
+    async def test(self, interaction: discord.Interaction):
+
+        view = discord.ui.View()
+        view.add_item(discord.ui.Button(style=discord.ButtonStyle.blurple, label="Test"))
+
+        await interaction.response.send_message(view)
