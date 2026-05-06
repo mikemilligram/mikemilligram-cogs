@@ -1,0 +1,10 @@
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "ha",
+    "short" : "interact with home assistant",
+    "description" : "interact with home assistant via the rest api",
+    "tags" : ["tools", "utility"],
+    "requirements" : [],
+    "hidden" : false
+}
