@@ -6,7 +6,7 @@ class HomeAssistantAPI:
     """
     Initialize Home Assistant API client.
     """
-    self.endpoint = url.rstrip('/') + "/api/"
+    self.endpoint = url.rstrip('/') + "/api"
     self.token = token
     self.headers = {
       'Authorization': f'Bearer {token}',
@@ -18,17 +18,18 @@ class HomeAssistantAPI:
     Test authentication by fetching the current user's information.
     """
     try:
-      response = requests.get(self.endpoint, headers=self.headers)
+      response = requests.get(f"{self.endpoint}/", headers=self.headers)
       return response.status_code == 200
     except requests.RequestException:
       return False
 
-  def change_state(self, entity_id: str, state: str) -> Dict[str, Any]:
+  def call_service(self, domain: str, entity: str, service: str) -> Dict[str, Any]:
     """
-    Change the state of an entity.
+    Call a service within a specific domain.
     """
-    endpoint = f"{self.endpoint}states/{entity_id}"
-    data = {"entity_id": entity_id, "state": state}
+    
+    endpoint = f"{self.endpoint}/services/{domain}/{service}"
+    data = {"entity_id": f"{domain}.{entity}"}
     response = requests.post(endpoint, json=data, headers=self.headers)
     response.raise_for_status()
     return response.json()

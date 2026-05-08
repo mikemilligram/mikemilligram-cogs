@@ -47,9 +47,9 @@ class HomeAssistant(commands.Cog):
         await interaction.response.send_message("Configuration cleared.")
         
     @commands.admin()
-    @commands.command(name="changestate")
-    async def change_state(self, ctx: commands.Context, entity_id: str, state: Literal["on", "off"]):
-        """Change the state of an entity."""
+    @commands.command(name="service")
+    async def call_service(self, ctx: commands.Context, domain: str, entity: str, service: str):
+        """Call a service within a specific domain."""
         
         url = await self.config.guild(ctx.guild).url()
         token = await self.config.guild(ctx.guild).token()
@@ -61,11 +61,8 @@ class HomeAssistant(commands.Cog):
         api = HomeAssistantAPI(url, token)
         
         try:
-            api.change_state(entity_id, state)
-            if state == "on":
-                await ctx.send(f"Turned on.")   
-            else:
-                await ctx.send(f"Turned off.")
+            api.call_service(domain, entity, service)
+            await ctx.tick()
 
         except Exception as e:
-            await ctx.send(f"Failed to change state for {entity_id}: {str(e)}")
+            await ctx.react_quietly("❌")
