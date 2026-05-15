@@ -34,3 +34,16 @@ class HomeAssistantAPI:
     response.raise_for_status()
     return response.json()
 
+  def announce(self, message: str, device_id: str) -> Dict[str, Any]:
+    """
+    Announce a message using a media player entity.
+    """
+    
+    endpoint = f"{self.endpoint}/services/assist_satellite/announce"
+    data = {
+      "message": message,
+      "device_id": device_id
+    }
+    response = requests.post(endpoint, json=data, headers=self.headers)
+    response.raise_for_status()
+    return response.json()

@@ -15,7 +15,9 @@ class HomeAssistant(commands.Cog):
         default_guild = {
             "url": "",
             "token": "",
-            "entities": {}
+            "entities": {
+                "satellite": ""
+            }
         }
         
         self.config.register_guild(**default_guild)
@@ -62,6 +64,38 @@ class HomeAssistant(commands.Cog):
         
         try:
             api.call_service(domain, entity, service)
+            await ctx.tick()
+
+        except Exception as e:
+            await ctx.react_quietly("❌")
+
+
+    @app_commands.checks.has_permissions(administrator=True)
+    @ha_slash.command(name="set_satellite", description="Set the device ID for Home Assistant Satellite announcements.")
+    async def set_satellite(self, interaction: discord.Interaction, device_id: str):
+        """Set the device ID for Home Assistant Satellite announcements."""
+        
+        await self.config.guild(interaction.guild).entities.set_raw("satellite", value=device_id)
+        await interaction.response.send_message(f"Satellite device ID set to `{device_id}`.")
+
+
+    @commands.admin()
+    @commands.command(name="say")
+    async def say(self, ctx: commands.Context, *, message: str):
+        """Announce a message using a media player entity."""
+        
+        url = await self.config.guild(ctx.guild).url()
+        token = await self.config.guild(ctx.guild).token()
+        device_id = await self.config.guild(ctx.guild).entities.satellite()
+        
+        if not url or not token:
+            await ctx.send("You need to authenticate first using /homeassistant auth.")
+            return
+        
+        api = HomeAssistantAPI(url, token)
+        
+        try:
+            api.announce(message, device_id)
             await ctx.tick()
 
         except Exception as e:
