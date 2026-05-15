@@ -48,7 +48,7 @@ class HomeAssistant(commands.Cog):
         await self.config.guild(interaction.guild).clear()
         await interaction.response.send_message("Configuration cleared.")
         
-    @commands.admin()
+
     @commands.command(name="service")
     async def call_service(self, ctx: commands.Context, domain: str, entity: str, service: str):
         """Call a service within a specific domain."""
@@ -79,7 +79,6 @@ class HomeAssistant(commands.Cog):
         await interaction.response.send_message(f"Satellite device ID set to `{device_id}`.")
 
 
-    @commands.admin()
     @commands.command(name="say")
     async def say(self, ctx: commands.Context, *, message: str):
         """Announce a message using a media player entity."""
