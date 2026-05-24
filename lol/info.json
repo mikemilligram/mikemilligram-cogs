@@ -1,0 +1,10 @@
+{
+    "author" : ["mikemilligram"],
+    "install_msg" : "",
+    "name" : "LoL",
+    "short" : "very niche league of legends tools",
+    "description" : "very, very niche. probably nobody else needs this.",
+    "tags" : ["tools"],
+    "requirements" : [],
+    "hidden" : false
+}

@@ -4,7 +4,7 @@
     "name" : "stonks",
     "short" : "keep track of your animal crossing turnip prices",
     "description" : "track turnip prices, let your friends view them and generate links to turnipprophet.io",
-    "tags" : ["fun"],
+    "tags" : ["tools"],
     "requirements" : [],
     "hidden" : false
 }

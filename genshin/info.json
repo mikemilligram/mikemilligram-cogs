@@ -4,7 +4,7 @@
     "name" : "genshin",
     "short" : "some tools to do genshin math",
     "description" : "just some things to make life easier and not have to whip out the ol' calculateor every time",
-    "tags" : ["genshin"],
+    "tags" : ["tools"],
     "requirements" : ["genshinstats"],
     "hidden" : false
 }

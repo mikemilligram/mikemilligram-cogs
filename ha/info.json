@@ -4,7 +4,7 @@
     "name" : "ha",
     "short" : "interact with home assistant",
     "description" : "interact with home assistant via the rest api",
-    "tags" : ["tools", "utility"],
+    "tags" : ["tools"],
     "requirements" : [],
     "hidden" : false
 }
