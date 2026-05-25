@@ -115,6 +115,5 @@ class LoL(commands.Cog):
             else:
                 await interaction.edit_original_response(content=f"{champ} has not been removed from your list")
                 pass
-            
         else:
             await interaction.response.send_message("your champs list is empty")
