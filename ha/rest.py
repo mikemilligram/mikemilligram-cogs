@@ -1,5 +1,7 @@
 import requests
 from typing import Any, Dict
+import time
+import re
 
 class HomeAssistantAPI:
   def __init__(self, url: str, token: str):
@@ -34,7 +36,7 @@ class HomeAssistantAPI:
     response.raise_for_status()
     return response.json()
 
-  def announce(self, message: str, device_id: str) -> Dict[str, Any]:
+  def announce(self, message: str, device_id: list[str]) -> Dict[str, Any]:
     """
     Announce a message using a media player entity.
     """

@@ -94,7 +94,7 @@ class HomeAssistant(commands.Cog):
         api = HomeAssistantAPI(url, token)
         
         try:
-            api.announce(message, device_id)
+            api.announce(message, [device_id])
             await ctx.tick()
 
         except Exception as e:
