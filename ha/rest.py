@@ -55,7 +55,7 @@ class HomeAssistantAPI:
     return self.call_service("light", "turn_off", data) 
 
 
-  def announce(self, message: str, device_id: str) -> Dict[str, Any]:
+  def announce(self, message: str, device_id: List[str]) -> Dict[str, Any]:
     """
     Announce a message using a media player entity.
     """
