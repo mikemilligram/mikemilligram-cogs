@@ -105,8 +105,8 @@ class HomeAssistantAPI:
                 await self.morse_element('dash', *entities)
                 sleep = Timings.INTRA_LETTER_GAP
             elif char == ' ':
-                sleep = Timings.INTER_LETTER_GAP
-        sleep = Timings.INTER_WORD_GAP - Timings.INTRA_LETTER_GAP
+                sleep = Timings.INTER_LETTER_GAP - Timings.INTRA_LETTER_GAP
+        sleep = Timings.INTER_WORD_GAP
     return True
                 
                 
